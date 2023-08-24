@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "446932438032",
+    "project_id": "taher-jewellery",
+    "storage_bucket": "taher-jewellery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446932438032:android:8d669db53c6bae933c4e95",
+        "android_client_info": {
+          "package_name": "ahmedzein.taher.jewellery.altaher_jewellery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446932438032-m5mgq71trsr5lfdbhditn21v96nv40i9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiwGgKWCbVuFcFX-OrqogA_pDF8-68DmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446932438032-m5mgq71trsr5lfdbhditn21v96nv40i9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

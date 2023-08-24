@@ -1,16 +1,19 @@
+import 'package:altaher_jewellery/core/managers/size_manager.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:altaher_jewellery/core/managers/asset_manager.dart';
 
-import '../../../../core/managers/size_manager.dart';
-import '../../../core/constants/constants.dart';
 import 'home_slider_background.dart';
 import 'home_slider_foreground.dart';
 import 'home_slider_indicator.dart';
 
 class HomeSlider extends StatefulWidget {
-  const HomeSlider({super.key});
+  final List<String> slideImages;
+
+  const HomeSlider({
+    super.key,
+    required this.slideImages,
+  });
 
   @override
   State<HomeSlider> createState() => _HomeSliderState();
@@ -28,7 +31,7 @@ class _HomeSliderState extends State<HomeSlider> {
             horizontal: AppPadding.screenBodyPadding,
           ),
           child: CarouselSlider.builder(
-            itemCount: 3,
+            itemCount: widget.slideImages.length,
             itemBuilder: (
               BuildContext context,
               int itemIndex,
@@ -41,8 +44,7 @@ class _HomeSliderState extends State<HomeSlider> {
                   children: [
                     const HomeSliderBackground(),
                     HomeSliderForeground(
-                      imgPath: AppConstants.sliderImages[itemIndex] ??
-                          ImageManager.slider1,
+                      imgUrl: widget.slideImages[itemIndex],
                     ),
                   ],
                 ),

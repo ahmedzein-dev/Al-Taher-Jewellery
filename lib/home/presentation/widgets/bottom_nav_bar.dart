@@ -1,9 +1,10 @@
+import 'package:altaher_jewellery/core/managers/asset_manager.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:altaher_jewellery/core/managers/asset_manager.dart';
 
+import '../../../core/managers/color_manager.dart';
 import '../../../core/shared/blocs/nav_bar/nav_bar_cubit.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -38,8 +39,8 @@ class BottomNavBar extends StatelessWidget {
           onTap: (index) {
             context.read<NavBarCubit>().changeActiveIndex(index);
           },
-          buttonBackgroundColor: const Color(0XFF24687D),
-          color: const Color(0XFF24687D),
+          buttonBackgroundColor: ColorManager.secondary,
+          color: ColorManager.secondary,
         );
       },
     );

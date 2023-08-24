@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/managers/route_manager.dart';
 import '../../../core/managers/size_manager.dart';
+import '../../../home/presentation/blocs/products/products_cubit.dart';
 import '../../managers/asset_manager.dart';
 import '../../managers/text_styles_manager.dart';
 
@@ -37,18 +39,27 @@ class ClientDrawer extends StatelessWidget {
                   style: TextStyleManager.darkBlue_24BOLD,
                 ),
                 ListTile(
-                  title: const Text('البحث'),
+                  title: Text(
+                    'البحث',
+                    style: TextStyleManager.black_20,
+                  ),
                   leading: SvgPicture.asset(
                     IconManager.search,
                     width: 35.w,
                     height: 35.h,
                   ),
                   onTap: () {
-                    Navigator.of(context).pushNamed(Routes.search);
+                    Navigator.of(context).pushNamed(
+                      Routes.search,
+                      arguments: context.read<ProductsCubit>().state.homeEntity,
+                    );
                   },
                 ),
                 ListTile(
-                  title: const Text('المفضلة'),
+                  title: Text(
+                    'المفضلة',
+                    style: TextStyleManager.black_20,
+                  ),
                   leading: SvgPicture.asset(
                     IconManager.favoriteBlack,
                     width: 35.w,
@@ -58,19 +69,11 @@ class ClientDrawer extends StatelessWidget {
                     Navigator.of(context).pushNamed(Routes.favorites);
                   },
                 ),
-                // ListTile(
-                //   title: const Text('المدونة'),
-                //   leading: SvgPicture.asset(
-                //     IconManager.blogBlack,
-                //     width: 35.w,
-                //     height: 35.h,
-                //   ),
-                //   onTap: () {
-                //     //     Navigator.of(context).pushNamed(Routes.blog);
-                //   },
-                // ),
                 ListTile(
-                  title: const Text('أسعار اليوم'),
+                  title: Text(
+                    'أسعار اليوم',
+                    style: TextStyleManager.black_20,
+                  ),
                   leading: SvgPicture.asset(
                     IconManager.currency,
                     width: 35.w,
@@ -82,14 +85,31 @@ class ClientDrawer extends StatelessWidget {
                 ),
                 ListTile(
                   //  title: const Text('الجواهرجى'),
-                  title: const Text('الطاهر'),
+                  title: Text(
+                    'الطاهر',
+                    style: TextStyleManager.black_20,
+                  ),
                   leading: SvgPicture.asset(
                     IconManager.contactUs,
                     width: 35.w,
                     height: 35.h,
                   ),
+                  onTap: () async {
+                    Navigator.of(context).pushNamed(Routes.contactUs);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'عن التطبيق',
+                    style: TextStyleManager.black_20,
+                  ),
+                  leading: SvgPicture.asset(
+                    IconManager.aboutUs,
+                    width: 35.w,
+                    height: 35.h,
+                  ),
                   onTap: () {
-                    //   Navigator.of(context).pushNamed(Routes.contactUs);
+                    Navigator.of(context).pushNamed(Routes.aboutUs);
                   },
                 ),
               ],

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:altaher_jewellery/core/managers/color_manager.dart';
+import 'package:flutter/material.dart';
 
 import '../../../core/shared/widgets/horizontal_list_items.dart';
-import '../../../home/domain/entities/product/product_entity.dart';
+import '../../../home/domain/entities/product_entity.dart';
 import 'category_background.dart';
 
 class CategoryListItems extends StatelessWidget {

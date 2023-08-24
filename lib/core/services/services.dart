@@ -1,10 +1,19 @@
-import 'package:get_it/get_it.dart';
+import 'package:altaher_jewellery/home/data/repositories/products_reposistory_impl.dart';
+import 'package:altaher_jewellery/home/domain/repositories/products_repository.dart';
+import 'package:altaher_jewellery/home/domain/use_cases/get_all_products.dart';
+import 'package:altaher_jewellery/home/domain/use_cases/get_latest_products.dart';
+import 'package:altaher_jewellery/home/presentation/blocs/products/products_cubit.dart';
+import 'package:altaher_jewellery/search/presentation/blocs/search_cubit.dart';
 import 'package:altaher_jewellery/welcome/data/data_sources/local/data_sources/welcome_cache_data_source.dart';
 import 'package:altaher_jewellery/welcome/data/repositories/welcome_repository_impl.dart';
 import 'package:altaher_jewellery/welcome/domain/repositories/welcome_repository.dart';
 import 'package:altaher_jewellery/welcome/presentation/blocs/welcome/welcome_cubit.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../home/data/data_sources/product_remote_data_source.dart';
+import '../../home/data/data_sources/product_remote_data_source_impl.dart';
 import '../../welcome/domain/use_cases/check_welcome_status_use_case.dart';
 import '../../welcome/domain/use_cases/complete_welcome_use_case.dart';
 import '../../welcome/presentation/blocs/splash/splash_cubit.dart';
@@ -14,9 +23,9 @@ final sl = GetIt.instance;
 
 Future<void> initServices() async {
   // external
-  // sl.registerLazySingleton(
-  //   () => _DioService.init(),
-  // );
+  sl.registerLazySingleton<FirebaseDatabase>(
+    () => FirebaseDatabase.instance,
+  );
   final sharedPreferences = await _SharedPreferencesService.init();
   sl.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
@@ -29,11 +38,21 @@ Future<void> initServices() async {
       sl(),
     ),
   );
+  sl.registerLazySingleton<ProductsRemoteDataSource>(
+    () => ProductsRemoteDataSourceImpl(
+      sl(),
+    ),
+  );
 
   // repositories
 
   sl.registerLazySingleton<WelcomeRepository>(
     () => WelcomeRepositoryImpl(
+      sl(),
+    ),
+  );
+  sl.registerLazySingleton<ProductsRepository>(
+    () => ProductsRepositoryImpl(
       sl(),
     ),
   );
@@ -50,6 +69,16 @@ Future<void> initServices() async {
       sl(),
     ),
   );
+  sl.registerLazySingleton<GetAllProductsUseCase>(
+    () => GetAllProductsUseCase(
+      sl(),
+    ),
+  );
+  sl.registerLazySingleton<GetLatestProductsUseCase>(
+    () => GetLatestProductsUseCase(
+      sl(),
+    ),
+  );
 
   // blocs
   sl.registerLazySingleton(
@@ -63,6 +92,15 @@ Future<void> initServices() async {
       sl(),
       sl(),
     ),
+  );
+  sl.registerFactory(
+    () => ProductsCubit(
+      sl(),
+      sl(),
+    ),
+  );
+  sl.registerFactory(
+    () => SearchCubit(),
   );
 }
 

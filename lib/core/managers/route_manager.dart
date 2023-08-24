@@ -1,14 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:altaher_jewellery/categories/presentation/screens/categories_screen.dart';
+import 'package:altaher_jewellery/about_contact_us/presentation/screens/about_us_screen.dart';
+import 'package:altaher_jewellery/about_contact_us/presentation/screens/contact_us_screen.dart';
 import 'package:altaher_jewellery/categories/presentation/screens/category_products.dart';
 import 'package:altaher_jewellery/core/shared/widgets/image_preview.dart';
 import 'package:altaher_jewellery/currency/presentation/screens/currency_screen.dart';
 import 'package:altaher_jewellery/favorites/presentation/screens/favorite_products_screen.dart';
-import 'package:altaher_jewellery/home/domain/entities/product/product_entity.dart';
+import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
+import 'package:altaher_jewellery/home/presentation/blocs/products/products_cubit.dart';
 import 'package:altaher_jewellery/home/presentation/screens/latest_products_screen.dart';
 import 'package:altaher_jewellery/home/presentation/screens/product_details_screen.dart';
+import 'package:altaher_jewellery/search/presentation/blocs/search_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../home/domain/entities/home_entity.dart';
 import '../../home/presentation/screens/home_layout.dart';
 import '../../search/presentation/screens/search_screen.dart';
 import '../../welcome/presentation/blocs/splash/splash_cubit.dart';
@@ -20,19 +24,18 @@ import '../shared/blocs/nav_bar/nav_bar_cubit.dart';
 class Routes {
   static const String splash = '/';
   static const String welcome = '/welcome';
-
-  // static const String welcome = '/';
   static const String home = '/home';
   static const String blog = '/blog';
   static const String latestProduct = '/latestProduct';
   static const String currency = '/currency';
-  static const String contactUs = '/contactUs';
   static const String categoryProducts = '/categoryProducts';
-  static const String categories = '/categories';
+  //static const String categories = '/categories';
   static const String search = '/search';
   static const String productDetails = '/productDetails';
   static const String favorites = '/favorites';
   static const String imagePreview = '/imagePreview';
+  static const String contactUs = '/contactUs';
+  static const String aboutUs = '/aboutUs';
 }
 
 class RouteGenerator {
@@ -56,18 +59,26 @@ class RouteGenerator {
       case Routes.home:
         return MaterialPageRoute(
           builder: (_) {
-            return BlocProvider(
-              create: (BuildContext context) => sl<NavBarCubit>(),
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (BuildContext context) => sl<NavBarCubit>(),
+                ),
+                BlocProvider(
+                  create: (BuildContext context) =>
+                      sl<ProductsCubit>()..getProducts(),
+                )
+              ],
               child: const HomeLayout(),
             );
           },
         );
-      case Routes.categories:
-        return MaterialPageRoute(
-          builder: (_) {
-            return const CategoriesScreen();
-          },
-        );
+      // case Routes.categories:
+      //   return MaterialPageRoute(
+      //     builder: (_) {
+      //       return const CategoriesScreen();
+      //     },
+      //   );
       case Routes.categoryProducts:
         final args = settings.arguments as Map;
         return MaterialPageRoute(
@@ -81,7 +92,12 @@ class RouteGenerator {
       case Routes.search:
         return MaterialPageRoute(
           builder: (_) {
-            return const SearchScreen();
+            return BlocProvider(
+              create: (_) => sl<SearchCubit>(),
+              child: SearchScreen(
+                homeEntity: settings.arguments as HomeEntity,
+              ),
+            );
           },
         );
       case Routes.productDetails:
@@ -116,8 +132,20 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) {
             return ImagePreview(
-              imgPath: settings.arguments as String,
+              imgUrl: settings.arguments as String,
             );
+          },
+        );
+      case Routes.contactUs:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const ContactUsScreen();
+          },
+        );
+      case Routes.aboutUs:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const AboutUSScreen();
           },
         );
     }

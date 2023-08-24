@@ -1,12 +1,14 @@
+import 'package:altaher_jewellery/core/managers/color_manager.dart';
+import 'package:altaher_jewellery/core/managers/size_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:altaher_jewellery/core/managers/color_manager.dart';
-import 'package:altaher_jewellery/core/managers/size_manager.dart';
 
+import '../../../core/constants/constants.dart';
 import '../../../core/managers/asset_manager.dart';
 import '../../../core/managers/text_styles_manager.dart';
-import '../../../home/domain/entities/product/product_entity.dart';
+import '../../../core/shared/widgets/cached_network_image.dart';
+import '../../../home/domain/entities/product_entity.dart';
 
 class SearchRectangularCard extends StatelessWidget {
   final ProductEntity product;
@@ -38,45 +40,66 @@ class SearchRectangularCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(
-                  AppRadius.borderRadius20.r,
-                ),
-                child: Image.asset(
-                  product.imgUrl,
-                  height: 90.h,
-                ),
-              ),
-              Column(
+              Row(
                 children: [
-                  Text(
-                    product.title,
-                    style: TextStyleManager.black_20BOLD.copyWith(
-                      fontWeight: FontWeight.w400,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(
+                      AppRadius.borderRadius20.r,
+                    ),
+                    child: CachedNetworkImageWidget(
+                      imgUrl: product.imgUrl,
+                      height: 90.h,
+                      width: 120.w,
+                      onErrorWidget: kNetworkImageOnErrorWidget,
                     ),
                   ),
                   SizedBox(
-                    height: 8.h,
+                    width: 25.w,
                   ),
-                  Text(
-                    '${product.weight}جرام',
-                    style: TextStyleManager.black_16,
+                  SizedBox(
+                    height: 70.h,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          product.title,
+                          style: TextStyleManager.trBlack_20BOLD.copyWith(
+                            height: 1.3,
+                          ),
+                        ),
+                        Text(
+                          '${product.weight} جرام',
+                          style: TextStyleManager.trBlack_20BOLD.copyWith(
+                            fontWeight: FontWeight.w400,
+                            height: .4,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  SvgPicture.asset(
-                    IconManager.favorite,
-                  ),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  Text(
-                    '${product.price} LE',
-                    style: TextStyleManager.black_16,
-                  ),
-                ],
+              SizedBox(
+                height: 70.h,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(
+                      IconManager.favorite,
+                    ),
+                    // Text(
+                    //   '${product.price} LE',
+                    //   textDirection: TextDirection.ltr,
+                    //   style: TextStyleManager.trBlack_20BOLD.copyWith(
+                    //     fontWeight: FontWeight.w400,
+                    //     fontSize: 16.sp,
+                    //     height: .4,
+                    //   ),
+                    // ),
+                  ],
+                ),
               ),
             ],
           ),

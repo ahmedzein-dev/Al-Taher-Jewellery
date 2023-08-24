@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../managers/text_styles_manager.dart';
+
 class FailureWidget extends StatelessWidget {
   final String message;
   final VoidCallback? onRetry;
@@ -12,21 +14,31 @@ class FailureWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          message,
-          style: Theme.of(context).textTheme.titleMedium,
-          textAlign: TextAlign.center,
-        ),
-        TextButton.icon(
-          onPressed: onRetry,
-          icon: const Icon(Icons.refresh),
-          label: const Text('اعادة تحميل'),
-        ),
-      ],
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            message,
+            style: TextStyleManager.black_18BOLD.copyWith(
+              color: Colors.red,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          TextButton.icon(
+            onPressed: onRetry,
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.black,
+            ),
+            label: Text(
+              'اعادة تحميل',
+              style: TextStyleManager.black_24ALMARAI,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

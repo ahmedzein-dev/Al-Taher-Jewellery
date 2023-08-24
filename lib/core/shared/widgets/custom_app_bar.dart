@@ -1,8 +1,10 @@
+import 'package:altaher_jewellery/core/managers/route_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:altaher_jewellery/core/managers/route_manager.dart';
 
+import '../../../home/presentation/blocs/products/products_cubit.dart';
 import '../../managers/asset_manager.dart';
 import '../../managers/text_styles_manager.dart';
 
@@ -31,7 +33,10 @@ buildAppBarWithLogo(BuildContext context, String logoPath) {
     actions: [
       IconButton(
         onPressed: () {
-          Navigator.of(context).pushNamed(Routes.search);
+          Navigator.of(context).pushNamed(
+            Routes.search,
+            arguments: context.read<ProductsCubit>().state.homeEntity,
+          );
         },
         icon: SvgPicture.asset(
           IconManager.search,

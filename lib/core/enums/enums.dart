@@ -32,6 +32,36 @@ enum Gender {
   }
 }
 
+enum Categories {
+  rings('خاتم'),
+  necklaces('سلسلة'),
+  bars('سبيكة'),
+  bracelets('غويشة'),
+  earrings('حلق'),
+  notFound('notFound');
+
+  const Categories(this.title);
+
+  final String title;
+
+  String getTitle() {
+    switch (this) {
+      case Categories.rings:
+        return 'rings';
+      case Categories.necklaces:
+        return 'necklaces';
+      case Categories.bars:
+        return 'bars';
+      case Categories.bracelets:
+        return 'bracelets';
+      case Categories.earrings:
+        return 'earrings';
+      case Categories.notFound:
+        return 'notFound';
+    }
+  }
+}
+
 enum FilterState {
   filtering,
   done,

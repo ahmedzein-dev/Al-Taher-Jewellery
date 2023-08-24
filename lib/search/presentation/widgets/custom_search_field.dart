@@ -12,10 +12,12 @@ class CustomSearchField extends StatelessWidget {
   final IconData? suffix;
   final Widget? prefix;
   final VoidCallback? onSuffixPressed;
+  final VoidCallback? onPrefixPressed;
   final String? Function(String?)? validator;
   final bool enabled;
   final bool readOnly;
   final VoidCallback? onTap;
+  final Function(String)? onFieldSubmitted;
   final Function(String?)? onChanged;
 
   const CustomSearchField({
@@ -27,11 +29,13 @@ class CustomSearchField extends StatelessWidget {
     this.suffix,
     this.prefix,
     this.onSuffixPressed,
+    this.onPrefixPressed,
     this.validator,
     this.enabled = true,
     this.readOnly = false,
     this.onTap,
     this.onChanged,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   @override
@@ -58,6 +62,7 @@ class CustomSearchField extends StatelessWidget {
         obscureText: isPassword,
         readOnly: readOnly,
         onTap: onTap,
+        onFieldSubmitted: onFieldSubmitted,
         onChanged: onChanged,
         textAlignVertical: TextAlignVertical.center,
         validator: validator,
@@ -71,21 +76,24 @@ class CustomSearchField extends StatelessWidget {
           hintStyle: const TextStyle(
             color: Colors.white70,
           ),
-          prefixIcon: Padding(
-            padding: EdgeInsets.only(
-              left: AppPadding.padding8.w,
-            ),
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: AppPadding.padding16.w,
+          prefixIcon: InkWell(
+            onTap: onPrefixPressed,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: AppPadding.padding8.w,
               ),
-              decoration: BoxDecoration(
-                color: ColorManager.primary,
-                borderRadius: BorderRadius.circular(
-                  AppRadius.borderRadius25.r,
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppPadding.padding16.w,
                 ),
+                decoration: BoxDecoration(
+                  color: ColorManager.primary,
+                  borderRadius: BorderRadius.circular(
+                    AppRadius.borderRadius25.r,
+                  ),
+                ),
+                child: prefix,
               ),
-              child: prefix,
             ),
           ),
           suffixIcon: GestureDetector(

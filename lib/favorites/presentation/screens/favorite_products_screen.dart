@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:altaher_jewellery/core/shared/widgets/favorite_produts_list_items.dart';
 import 'package:altaher_jewellery/home/presentation/widgets/latest_product_screen_background_lines.dart';
+import 'package:flutter/material.dart';
 
 import '../../../core/managers/size_manager.dart';
 import '../../../core/shared/widgets/custom_app_bar.dart';
@@ -14,15 +14,17 @@ class FavoriteProductsScreen extends StatelessWidget {
       appBar: buildTransparentAppBarWithTitle(
         title: 'المفضلة',
       ),
-      body: const Stack(
+      body: Stack(
         children: [
-          LatestProductsBackgroundLines(),
+          const LatestProductsBackgroundLines(),
           Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: AppPadding.padding10,
               vertical: AppPadding.padding16,
             ),
-            child: FavoriteProductsListItems(),
+            child: FavoriteProductsListItems(
+              products: [],
+            ),
           ),
         ],
       ),

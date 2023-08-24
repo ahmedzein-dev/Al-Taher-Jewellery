@@ -1,8 +1,10 @@
+import 'package:altaher_jewellery/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../home/domain/entities/product/product_entity.dart';
+import '../../../core/shared/widgets/cached_network_image.dart';
+import '../../../home/domain/entities/product_entity.dart';
 import '../../managers/asset_manager.dart';
 import '../../managers/route_manager.dart';
 import '../../managers/text_styles_manager.dart';
@@ -23,7 +25,7 @@ class ProductItemCard extends StatelessWidget {
     this.fromDetails = false,
     this.margin,
     this.width = 125,
-    this.height = 90,
+    this.height = 100,
     super.key,
   });
 
@@ -66,14 +68,18 @@ class ProductItemCard extends StatelessWidget {
                 width: width.w,
                 height: height,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(
-                    20.r,
-                  ),
-                  child: Image.asset(
-                    product.imgUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(
+                      20.r,
+                    ),
+                    child: CachedNetworkImageWidget(
+                      imgUrl: product.imgUrl,
+                      onErrorWidget: kNetworkImageOnErrorWidget,
+                    )
+                    // Image.asset(
+                    //   product.imgUrl,
+                    //   fit: BoxFit.cover,
+                    // ),
+                    ),
               ),
               const SizedBox(
                 height: 10,
@@ -98,27 +104,34 @@ class ProductItemCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: width.w,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '${product.weight}جرام',
-                      style: TextStyleManager.black_14,
-                    ),
-                    Text(
-                      '${product.price} LE',
-                      textDirection: TextDirection.ltr,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyleManager.black_14,
-                    ),
-                  ],
-                ),
-              ),
+              // if (product.weight.isNotEmpty && product.price.isNotEmpty)
+              //   Column(
+              //     children: [
+              //       const SizedBox(
+              //         height: 10,
+              //       ),
+              //       SizedBox(
+              //         width: width.w,
+              //         child: Row(
+              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //           children: [
+              //             if (product.weight.isNotEmpty)
+              //               Text(
+              //                 '${product.weight}جرام',
+              //                 style: TextStyleManager.black_14,
+              //               ),
+              //             if (product.price.isNotEmpty)
+              //               Text(
+              //                 '${product.price} LE',
+              //                 textDirection: TextDirection.ltr,
+              //                 overflow: TextOverflow.ellipsis,
+              //                 style: TextStyleManager.black_14,
+              //               ),
+              //           ],
+              //         ),
+              //       ),
+              //     ],
+              //   )
             ],
           ),
         ),

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../core/constants/constants.dart';
+import '../../../core/shared/widgets/cached_network_image.dart';
 
 class HomeSliderForeground extends StatelessWidget {
-  final String imgPath;
+  final String imgUrl;
 
   const HomeSliderForeground({
     super.key,
-    required this.imgPath,
+    required this.imgUrl,
   });
 
   @override
@@ -17,11 +19,9 @@ class HomeSliderForeground extends StatelessWidget {
           20.0,
         ),
       ),
-      child: Image.asset(
-        imgPath,
-        width: 1.sw,
-        //fit: BoxFit.fill,
-        fit: BoxFit.cover,
+      child: CachedNetworkImageWidget(
+        imgUrl: imgUrl,
+        onErrorWidget: kNetworkImageOnErrorWidget,
       ),
     );
   }

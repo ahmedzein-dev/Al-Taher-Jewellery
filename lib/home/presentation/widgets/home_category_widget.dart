@@ -1,7 +1,7 @@
+import 'package:altaher_jewellery/core/shared/widgets/product_item_card.dart';
+import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:altaher_jewellery/core/shared/widgets/product_item_card.dart';
-import 'package:altaher_jewellery/home/domain/entities/product/product_entity.dart';
 
 import '../../../core/managers/route_manager.dart';
 import '../../../core/managers/size_manager.dart';

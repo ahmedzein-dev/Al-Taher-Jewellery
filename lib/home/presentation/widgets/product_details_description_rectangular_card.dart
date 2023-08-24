@@ -1,6 +1,6 @@
+import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:altaher_jewellery/home/domain/entities/product/product_entity.dart';
 
 import '../../../core/managers/color_manager.dart';
 import '../../../core/managers/size_manager.dart';
@@ -46,7 +46,9 @@ class ProductDetailsDescriptionRectangularCard extends StatelessWidget {
                   height: 8.h,
                 ),
                 Text(
-                  product.description,
+                  product.description.isNotEmpty
+                      ? product.description
+                      : 'غير متاح وصف لهذا المتنج حتى الان.',
                   style: TextStyleManager.black_16,
                   maxLines: 3,
                 ),

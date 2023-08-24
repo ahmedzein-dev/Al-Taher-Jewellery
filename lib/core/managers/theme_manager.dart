@@ -1,9 +1,8 @@
+import 'package:altaher_jewellery/core/managers/text_styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:altaher_jewellery/core/managers/text_styles_manager.dart';
 
-import 'asset_manager.dart';
 import 'color_manager.dart';
 import 'size_manager.dart';
 
@@ -11,7 +10,7 @@ class ThemeManager {
   static ThemeData get lightTheme {
     return ThemeData(
       brightness: Brightness.light,
-      fontFamily: FontManager.balooBhaijaan,
+      //fontFamily: FontManager.balooBhaijaan,
       scaffoldBackgroundColor: ColorManager.background,
       primaryColor: ColorManager.primary,
       primaryColorLight: ColorManager.primaryLight,

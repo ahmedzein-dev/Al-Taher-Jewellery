@@ -341,4 +341,16 @@ class TextStyleManager {
       fontSize: 26.sp,
       color: ColorManager.secondary,
       fontFamily: FontManager.balooBhaijaan);
+
+  // traditional arabic style
+
+  static final TextStyle trBlack_20BOLD = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 20.sp,
+    color: ColorManager.black,
+  );
+  static final TextStyle trBlack_20 = TextStyle(
+    fontSize: 20.sp,
+    color: ColorManager.black,
+  );
 }

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/managers/route_manager.dart';
 import '../../../core/managers/size_manager.dart';
 import '../../../core/shared/widgets/category_section_title.dart';
-import '../../../home/domain/entities/product/product_entity.dart';
+import '../../../home/domain/entities/product_entity.dart';
 
 class CategoryBackground extends StatelessWidget {
   final Widget child;

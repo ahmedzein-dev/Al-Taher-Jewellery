@@ -1,12 +1,12 @@
+import 'package:altaher_jewellery/core/shared/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:altaher_jewellery/core/shared/widgets/custom_app_bar.dart';
 
 import '../../../core/managers/asset_manager.dart';
 import '../../../core/managers/size_manager.dart';
 import '../../../core/shared/widgets/product_item_card.dart';
-import '../../../home/domain/entities/product/product_entity.dart';
+import '../../../home/domain/entities/product_entity.dart';
 
 class CategoryProducts extends StatelessWidget {
   final String title;
@@ -37,28 +37,26 @@ class CategoryProducts extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
+          GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: .95,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 20,
+            ),
             padding: const EdgeInsets.symmetric(
               horizontal: AppPadding.padding10,
               vertical: AppPadding.padding16,
             ),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: .81,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 20,
-              ),
-              itemCount: products1.length,
-              itemBuilder: (context, index) {
-                return ProductItemCard(
-                  allProducts: products,
-                  width: 150,
-                  height: 120,
-                  product: products[index],
-                );
-              },
-            ),
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              return ProductItemCard(
+                allProducts: products,
+                width: 150,
+                height: 120,
+                product: products[index],
+              );
+            },
           ),
         ],
       ),

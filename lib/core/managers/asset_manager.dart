@@ -3,12 +3,10 @@ const String _imagesPath = '$_assetsPath/images';
 const String _iconsPath = '$_assetsPath/icons';
 
 class ImageManager {
-  static const String altaher_jewelleryAppLogo =
-      '$_imagesPath/altaher_jewellery_app_logo.svg';
+  static const String gwahergyAppLogo = '$_imagesPath/gwahergy_app_logo.svg';
   static const String taherAppLogo = '$_imagesPath/taher_app_logo.svg';
-  static const String altaher_jewelleryHomeLogo = '$_imagesPath/home_logo.svg';
-  static const String altaher_jewelleryWelcomeLogo =
-      '$_imagesPath/welcome_logo.svg';
+  static const String gwahergyHomeLogo = '$_imagesPath/home_logo.svg';
+  static const String gwahergyWelcomeLogo = '$_imagesPath/welcome_logo.svg';
   static const String taherHomeLogo = '$_imagesPath/home_taher_logo.svg';
   static const String taherWelcomeLogo = '$_imagesPath/welcome_taher_logo.svg';
   static const String welcomeTopLeftImage =
@@ -70,6 +68,7 @@ class IconManager {
   static const String currency = '$_iconsPath/currency.svg';
   static const String search = '$_iconsPath/search.svg';
   static const String searchBlue = '$_iconsPath/search_blue.svg';
+  static const String aboutUs = '$_iconsPath/about_us.svg';
 }
 
 class FontManager {

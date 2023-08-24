@@ -1,7 +1,7 @@
+import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:altaher_jewellery/home/domain/entities/product/product_entity.dart';
 
 import '../../../core/managers/asset_manager.dart';
 import '../../../core/managers/color_manager.dart';
@@ -51,16 +51,19 @@ class ProductDetailsTitleRectangularCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '${product.weight}جرام',
+                    product.weight.isNotEmpty
+                        ? '${product.weight}جرام'
+                        : 'وزن هذا المتنج غير متاح الان.',
                     style: TextStyleManager.black_16,
                   ),
-                  SizedBox(
-                    width: 45.w,
-                  ),
-                  Text(
-                    '${product.price} LE',
-                    style: TextStyleManager.black_16,
-                  ),
+                  // SizedBox(
+                  //   width: 45.w,
+                  // ),
+                  // if (product.price.isNotEmpty)
+                  //   Text(
+                  //     '${product.price} LE',
+                  //     style: TextStyleManager.black_16,
+                  //   ),
                 ],
               ),
             ],

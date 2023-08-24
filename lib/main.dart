@@ -1,8 +1,9 @@
+import 'package:altaher_jewellery/welcome/presentation/blocs/welcome/welcome_cubit.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:altaher_jewellery/welcome/presentation/blocs/welcome/welcome_cubit.dart';
 
 import 'core/constants/constants.dart';
 import 'core/managers/route_manager.dart';
@@ -12,7 +13,7 @@ import 'core/utils/bloc_observer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp();
   await initServices();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
