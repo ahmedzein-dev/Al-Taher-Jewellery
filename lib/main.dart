@@ -15,6 +15,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await initServices();
+  // await Hive.initFlutter();
+  // await Hive.openBox(AppConstants.kFavoritesBox);
+  // Hive.registerAdapter(ProductEntityAdapter());
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }

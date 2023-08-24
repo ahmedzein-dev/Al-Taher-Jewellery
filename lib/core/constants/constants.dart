@@ -13,6 +13,7 @@ class AppConstants {
   static const String earrings = 'earrings';
   static const String bracelets = 'bracelets';
   static const String rings = 'rings';
+  static const String kFavoritesBox = 'favoritesBox';
 
   static const Map<int, String> sliderImages = {
     0: ImageManager.slider1,

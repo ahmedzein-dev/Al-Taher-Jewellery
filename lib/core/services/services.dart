@@ -1,4 +1,5 @@
 import 'package:altaher_jewellery/home/data/repositories/products_reposistory_impl.dart';
+import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
 import 'package:altaher_jewellery/home/domain/repositories/products_repository.dart';
 import 'package:altaher_jewellery/home/domain/use_cases/get_all_products.dart';
 import 'package:altaher_jewellery/home/domain/use_cases/get_latest_products.dart';
@@ -10,25 +11,32 @@ import 'package:altaher_jewellery/welcome/domain/repositories/welcome_repository
 import 'package:altaher_jewellery/welcome/presentation/blocs/welcome/welcome_cubit.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../favorites/presentation/blocs/favorites_cubit.dart';
 import '../../home/data/data_sources/product_remote_data_source.dart';
 import '../../home/data/data_sources/product_remote_data_source_impl.dart';
 import '../../welcome/domain/use_cases/check_welcome_status_use_case.dart';
 import '../../welcome/domain/use_cases/complete_welcome_use_case.dart';
 import '../../welcome/presentation/blocs/splash/splash_cubit.dart';
+import '../constants/constants.dart';
 import '../shared/blocs/nav_bar/nav_bar_cubit.dart';
 
 final sl = GetIt.instance;
 
 Future<void> initServices() async {
   // external
+  final sharedPreferences = await _SharedPreferencesService.init();
+  final hive = await _HiveServices.init();
   sl.registerLazySingleton<FirebaseDatabase>(
     () => FirebaseDatabase.instance,
   );
-  final sharedPreferences = await _SharedPreferencesService.init();
   sl.registerLazySingleton<SharedPreferences>(
     () => sharedPreferences,
+  );
+  sl.registerLazySingleton<HiveInterface>(
+    () => hive,
   );
 
   // data sources
@@ -102,6 +110,11 @@ Future<void> initServices() async {
   sl.registerFactory(
     () => SearchCubit(),
   );
+  sl.registerFactory(
+    () => FavoritesCubit(
+      sl(),
+    ),
+  );
 }
 
 // class _DioService {
@@ -143,5 +156,14 @@ Future<void> initServices() async {
 class _SharedPreferencesService {
   static Future<SharedPreferences> init() async {
     return SharedPreferences.getInstance();
+  }
+}
+
+class _HiveServices {
+  static Future<HiveInterface> init() async {
+    await Hive.initFlutter();
+    Hive.registerAdapter(ProductEntityAdapter());
+    await Hive.openBox<ProductEntity>(AppConstants.kFavoritesBox);
+    return Hive;
   }
 }
