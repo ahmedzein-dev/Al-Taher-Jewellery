@@ -14,7 +14,8 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../favorites/presentation/blocs/favorites_cubit.dart';
+import '../../favorites/presentation/blocs/Favorites/favorites_cubit.dart';
+import '../../favorites/presentation/blocs/add_delete_favorite_cubit/add_delete_favorite_cubit.dart';
 import '../../home/data/data_sources/product_remote_data_source.dart';
 import '../../home/data/data_sources/product_remote_data_source_impl.dart';
 import '../../welcome/domain/use_cases/check_welcome_status_use_case.dart';
@@ -112,6 +113,11 @@ Future<void> initServices() async {
   );
   sl.registerFactory(
     () => FavoritesCubit(
+      sl(),
+    ),
+  );
+  sl.registerFactory(
+    () => AddDeleteFavoriteCubit(
       sl(),
     ),
   );

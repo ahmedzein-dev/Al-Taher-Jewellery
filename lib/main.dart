@@ -10,6 +10,7 @@ import 'core/managers/route_manager.dart';
 import 'core/managers/theme_manager.dart';
 import 'core/services/services.dart';
 import 'core/utils/bloc_observer.dart';
+import 'favorites/presentation/blocs/Favorites/favorites_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,8 +29,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<WelcomeCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => sl<WelcomeCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<FavoritesCubit>()..getFavorite(),
+        )
+      ],
       child: ScreenUtilInit(
         designSize: const Size(390, 852),
         minTextAdapt: true,

@@ -24,6 +24,25 @@ class ProductEntity extends HiveObject with EquatableMixin {
     required this.description,
   });
 
+  ProductEntity copyWith({
+    String? id,
+    String? title,
+    String? imgUrl,
+    String? weight,
+    String? description,
+    bool? isFavorite,
+
+    // List<Post>? searchedPosts,
+  }) {
+    return ProductEntity(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      imgUrl: imgUrl ?? this.imgUrl,
+      weight: weight ?? this.weight,
+      description: description ?? this.description,
+    );
+  }
+
   @override
   List<Object?> get props => [id, title, imgUrl, weight, description];
 }

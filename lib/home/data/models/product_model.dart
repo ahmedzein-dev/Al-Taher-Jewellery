@@ -26,6 +26,7 @@ class ProductModel extends ProductEntity {
       'imgUrl': imgUrl,
       'title': title,
       'weight': weight,
+      //   'isFavorite': isFavorite,
     };
   }
 
@@ -33,10 +34,7 @@ class ProductModel extends ProductEntity {
     List<ProductModel> products = [];
     snapShot.forEach((key, value) {
       products.add(
-        ProductModel.fromJson(
-          key,
-          value,
-        ),
+        ProductModel.fromJson(key, value),
       );
     });
     return products;

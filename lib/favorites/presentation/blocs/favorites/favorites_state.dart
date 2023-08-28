@@ -19,10 +19,10 @@ class FavoritesEmptyState extends FavoritesState {
 }
 
 class FavoritesSuccessState extends FavoritesState {
-  final List<ProductEntity> products;
+  final List<ProductEntity> favorites;
 
-  const FavoritesSuccessState({required this.products});
+  const FavoritesSuccessState({required this.favorites});
 
   @override
-  List<Object> get props => [products];
+  List<Object> get props => [favorites];
 }

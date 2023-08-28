@@ -1,16 +1,23 @@
+import 'package:altaher_jewellery/core/shared/widgets/product_item_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../../home/domain/entities/product_entity.dart';
-import 'product_item_card.dart';
 
-class FavoriteProductsListItems extends StatelessWidget {
+class ProductsGridView extends StatelessWidget {
   final List<ProductEntity> products;
 
-  const FavoriteProductsListItems({required this.products, super.key});
+  const ProductsGridView({
+    required this.products,
+    this.padding,
+    super.key,
+  });
+
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      padding: padding,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: .95,

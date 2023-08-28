@@ -1,11 +1,16 @@
+import 'dart:developer';
+
 import 'package:altaher_jewellery/core/constants/constants.dart';
+import 'package:altaher_jewellery/favorites/presentation/blocs/Favorites/favorites_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/shared/widgets/cached_network_image.dart';
 import '../../../home/domain/entities/product_entity.dart';
 import '../../managers/asset_manager.dart';
+import '../../managers/color_manager.dart';
 import '../../managers/route_manager.dart';
 import '../../managers/text_styles_manager.dart';
 
@@ -31,6 +36,7 @@ class ProductItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('ProductItemCard build');
     return InkWell(
       onTap: fromDetails
           ? () {
@@ -96,11 +102,18 @@ class ProductItemCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    SvgPicture.asset(
-                      IconManager.favorite,
-                      width: 20,
-                      height: 20,
-                    ),
+                    context.select<FavoritesCubit, bool>((favoritesCubit) =>
+                            favoritesCubit.isProductInFavorites(product.id))
+                        ? SvgPicture.asset(
+                            IconManager.favorite,
+                          )
+                        : SvgPicture.asset(
+                            IconManager.favorite,
+                            colorFilter: const ColorFilter.mode(
+                              ColorManager.grey,
+                              BlendMode.srcIn,
+                            ),
+                          )
                   ],
                 ),
               ),

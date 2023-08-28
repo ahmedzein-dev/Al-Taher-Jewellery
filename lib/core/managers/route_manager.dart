@@ -3,6 +3,7 @@ import 'package:altaher_jewellery/about_contact_us/presentation/screens/contact_
 import 'package:altaher_jewellery/categories/presentation/screens/category_products.dart';
 import 'package:altaher_jewellery/core/shared/widgets/image_preview.dart';
 import 'package:altaher_jewellery/currency/presentation/screens/currency_screen.dart';
+import 'package:altaher_jewellery/favorites/presentation/blocs/add_delete_favorite_cubit/add_delete_favorite_cubit.dart';
 import 'package:altaher_jewellery/favorites/presentation/screens/favorite_products_screen.dart';
 import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
 import 'package:altaher_jewellery/home/presentation/blocs/products/products_cubit.dart';
@@ -29,6 +30,7 @@ class Routes {
   static const String latestProduct = '/latestProduct';
   static const String currency = '/currency';
   static const String categoryProducts = '/categoryProducts';
+
   //static const String categories = '/categories';
   static const String search = '/search';
   static const String productDetails = '/productDetails';
@@ -104,10 +106,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) {
             final args = settings.arguments as Map;
-            return ProductDetailsScreen(
-              product: args['product'] as ProductEntity,
-              allProducts: args['allProducts'] as List<ProductEntity>,
-            );
+            return BlocProvider(
+                create: (_) => sl<AddDeleteFavoriteCubit>(),
+                child: ProductDetailsScreen(
+                  product: args['product'] as ProductEntity,
+                  allProducts: args['allProducts'] as List<ProductEntity>,
+                ));
           },
         );
       case Routes.currency:

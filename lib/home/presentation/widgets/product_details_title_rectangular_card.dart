@@ -1,12 +1,11 @@
 import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../../../core/managers/asset_manager.dart';
 import '../../../core/managers/color_manager.dart';
 import '../../../core/managers/size_manager.dart';
 import '../../../core/managers/text_styles_manager.dart';
+import 'favorite_icon_widget.dart';
 
 class ProductDetailsTitleRectangularCard extends StatelessWidget {
   final ProductEntity product;
@@ -43,9 +42,7 @@ class ProductDetailsTitleRectangularCard extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  SvgPicture.asset(
-                    IconManager.favorite,
-                  ),
+                  FavoriteIconWidget(product: product),
                 ],
               ),
               Row(

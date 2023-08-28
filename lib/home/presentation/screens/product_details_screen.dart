@@ -44,17 +44,19 @@ class ProductDetailsScreen extends StatelessWidget {
                 product: product,
               ),
               const Spacer(),
-              ProductDetailsSectionTitle(
-                onTap: () {},
-              ),
+              if (allProducts.length > 1)
+                ProductDetailsSectionTitle(
+                  onTap: () {},
+                ),
               SizedBox(
                 height: 10.h,
               ),
-              HorizontalListItems(
-                allProducts: allProducts,
-                product: product,
-                color: ColorManager.rectangleCard,
-              ),
+              if (allProducts.length > 1)
+                HorizontalListItems(
+                  allProducts: allProducts,
+                  product: product,
+                  color: ColorManager.rectangleCard,
+                ),
             ],
           ),
         ],

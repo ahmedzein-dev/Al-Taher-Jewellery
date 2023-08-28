@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:altaher_jewellery/core/error/exceptions.dart';
 import 'package:altaher_jewellery/home/data/models/home_model.dart';
 import 'package:altaher_jewellery/home/data/models/product_model.dart';
@@ -17,19 +15,16 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
 
   @override
   Future<HomeModel> getAllProducts() async {
-    log('getAllProducts');
     try {
       final DatabaseReference databaseReference =
           firebaseDatabaseInstance.ref();
       DatabaseEvent event = await databaseReference.once();
       Map? data = event.snapshot.value as Map?;
-      log('Data is $data');
       if (data == null || data.isEmpty) {
         throw const CustomException.unKnownException(
             'لا توجد منتجات متوفرة الان من فضلك حاول في وقت لاحق');
       }
       homeModel = HomeModel.modelFromSnapShot(data);
-      log('first slider image is ${homeModel.slider.first}');
       return homeModel;
     } catch (exception) {
       rethrow;
