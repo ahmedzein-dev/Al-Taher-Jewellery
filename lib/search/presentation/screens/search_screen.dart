@@ -20,7 +20,8 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildTransparentAppBarWithTitle(title: 'البحث'),
+      appBar: buildTransparentAppBar(
+          title: 'البحث', hasBackButton: true, context: context),
       body: Stack(
         children: [
           const SearchBackgroundLines(),
@@ -30,6 +31,9 @@ class SearchScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
+                SizedBox(
+                  height: 20.h,
+                ),
                 CustomSearchField(
                   controller: context.read<SearchCubit>().searchController,
                   hint: 'أكتب ما تريد البحث عنه',

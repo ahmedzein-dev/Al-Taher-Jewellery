@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../managers/asset_manager.dart';
-
 class AppConstants {
   static const String onBoardingWelcomeCacheKey = 'onBoardingWelcomeCacheKey';
   static const String titles = 'titles';
@@ -14,12 +12,15 @@ class AppConstants {
   static const String bracelets = 'bracelets';
   static const String rings = 'rings';
   static const String kFavoritesBox = 'favoritesBox';
+  static const String whatsappUrl = 'whatsapp://send?phone=number';
+  static const String contactUrl = 'tel:number';
+  static const String facebookUrl = 'fb://profile/id';
 
-  static const Map<int, String> sliderImages = {
-    0: ImageManager.slider1,
-    1: ImageManager.slider2,
-    2: ImageManager.slider3,
-  };
+  // static const Map<int, String> sliderImages = {
+  //   0: ImageManager.slider1,
+  //   1: ImageManager.slider2,
+  //   2: ImageManager.slider3,
+  // };
 }
 
 const kShimmerBaseColor = Color(0xFFE0E0E0);

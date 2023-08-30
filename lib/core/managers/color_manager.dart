@@ -30,4 +30,8 @@ class ColorManager {
   static const rectangleCard = Color(0xFFFFFFBF);
   static const productItemCard = Color(0xFFFFF9D7);
   static const listItemsBackground = Color(0xFFFFF7CC);
+  static const facebookColor = Color(0xFF3B5998);
+  static const whatsAppColor = Color(0xFF25D366);
+  static const dividerColor = Color.fromRGBO(249, 249, 249, 0.1);
+  static const bottomSheetBackground = Color(0xFF1D1D1D);
 }

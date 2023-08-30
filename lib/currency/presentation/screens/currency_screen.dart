@@ -1,6 +1,6 @@
+import 'package:altaher_jewellery/currency/presentation/widgets/currency_exchange_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:altaher_jewellery/currency/presentation/widgets/currency_exchange_card.dart';
 
 import '../../../core/managers/size_manager.dart';
 import '../../../core/shared/widgets/custom_app_bar.dart';
@@ -13,7 +13,8 @@ class CurrencyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildTransparentAppBarWithTitle(title: 'أسعار اليوم'),
+      appBar: buildTransparentAppBar(
+          title: 'أسعار اليوم', hasBackButton: true, context: context),
       body: Stack(
         children: [
           const CurrencyBackgroundLines(),

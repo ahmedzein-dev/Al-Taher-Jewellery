@@ -27,7 +27,13 @@ class ProductDetailsHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           AppRadius.borderRadius23.r,
         ),
-        child: InkWell(
+        child: GestureDetector(
+          onPanStart: (_) {
+            Navigator.of(context).pushNamed(
+              Routes.imagePreview,
+              arguments: imgUrl,
+            );
+          },
           onTap: () {
             Navigator.of(context).pushNamed(
               Routes.imagePreview,

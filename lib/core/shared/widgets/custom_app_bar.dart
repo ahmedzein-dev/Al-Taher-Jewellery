@@ -1,3 +1,4 @@
+import 'package:altaher_jewellery/core/managers/color_manager.dart';
 import 'package:altaher_jewellery/core/managers/route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,18 +69,38 @@ buildAppBarWithTitleAndActions(BuildContext context, String title) {
   );
 }
 
-buildTransparentAppBarWithTitle({String? title}) {
+buildTransparentAppBar(
+    {String? title, bool? hasBackButton, required BuildContext context}) {
   return AppBar(
+    leadingWidth: 55.w,
+    leading: hasBackButton != null
+        ? InkWell(
+            onTap: () => Navigator.maybePop(context),
+            child: Padding(
+              padding: EdgeInsets.only(right: 20.0.w),
+              child: const Directionality(
+                textDirection: TextDirection.ltr,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: ColorManager.primary,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: ColorManager.secondary,
+                  ),
+                ),
+              ),
+            ),
+          )
+        : null,
     backgroundColor: Colors.transparent,
     elevation: 0,
-    title: Padding(
-      padding: EdgeInsets.only(top: 10.0.h),
-      child: title != null
-          ? Text(
-              title,
-              style: TextStyleManager.darkBlue_24BOLD,
-            )
-          : null,
-    ),
+    title: title != null
+        ? Text(
+            title,
+            style: TextStyleManager.darkBlue_24BOLD,
+          )
+        : null,
   );
 }

@@ -16,9 +16,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await initServices();
-  // await Hive.initFlutter();
-  // await Hive.openBox(AppConstants.kFavoritesBox);
-  // Hive.registerAdapter(ProductEntityAdapter());
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
@@ -26,7 +23,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -44,7 +40,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return MaterialApp(
-            title: 'الجواهرجي',
+            title: 'مجوهرات الطاهر',
             debugShowCheckedModeBanner: false,
             theme: ThemeManager.lightTheme,
             onGenerateRoute: RouteGenerator.getRoute,

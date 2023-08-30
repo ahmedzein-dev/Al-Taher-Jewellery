@@ -10,7 +10,9 @@ class FavoriteProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildTransparentAppBarWithTitle(
+      appBar: buildTransparentAppBar(
+        hasBackButton: true,
+        context: context,
         title: 'المفضلة',
       ),
       body: const Stack(

@@ -1,9 +1,8 @@
+import 'package:altaher_jewellery/welcome/presentation/blocs/welcome/welcome_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:altaher_jewellery/welcome/presentation/blocs/welcome/welcome_cubit.dart';
 
 import '../../../../core/managers/color_manager.dart';
 import '../../../core/enums/enums.dart';
@@ -46,15 +45,6 @@ class SplashScreen extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          toolbarHeight: 0,
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: ColorManager.white,
-            statusBarIconBrightness: Brightness.dark,
-          ),
-        ),
         backgroundColor: ColorManager.white,
         body: Center(
           child: SizedBox(

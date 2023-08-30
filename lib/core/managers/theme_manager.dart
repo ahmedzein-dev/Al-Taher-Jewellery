@@ -34,8 +34,9 @@ class ThemeManager {
           color: ColorManager.black,
         ),
         systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: ColorManager.white,
+          statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
         ),
       ),
       listTileTheme: ListTileThemeData(

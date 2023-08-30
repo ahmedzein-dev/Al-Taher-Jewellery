@@ -11,29 +11,22 @@ class ImageManager {
   static const String taherWelcomeLogo = '$_imagesPath/welcome_taher_logo.svg';
   static const String welcomeTopLeftImage =
       '$_imagesPath/welcome_top_left_image.svg';
-  static const String welcomeCenterImage =
-      '$_imagesPath/welcome_center_image.svg';
   static const String welcomeBottomRightImage =
       '$_imagesPath/welcome_bottom_right_image.svg';
-  static const String welcomeForegroundImageSvg =
-      '$_imagesPath/welcome_foreground_image.svg';
   static const String welcomeForegroundImage =
       '$_imagesPath/welcome_foreground_image.png';
+  static const String taherWelcomeForegroundImage =
+      '$_imagesPath/taher_welcome_foreground_image.png';
   static const String popularProductsBackgroundImageSvg =
       '$_imagesPath/popular_products_background_image.svg';
   static const String blogBackgroundImageSvg =
       '$_imagesPath/blog_backgpound_image.svg';
   static const String blogImage = '$_imagesPath/blog_image.png';
-  static const String homeSliderImage = '$_imagesPath/slider_image.png';
-  static const String homeFirstCategoryBackgroundLines =
-      '$_imagesPath/home_first_category_background_lines.png';
-  static const String homeSecondCategoryBackgroundLines =
-      '$_imagesPath/home_second_category_background_lines.svg';
-  static const String bracelet = '$_imagesPath/bracelet.jpeg';
-  static const String ring = '$_imagesPath/ring.jpeg';
-  static const String necklace = '$_imagesPath/necklace.jpeg';
-  static const String earring = '$_imagesPath/earring.jpeg';
-  static const String bar = '$_imagesPath/bar.jpeg';
+
+  // static const String homeFirstCategoryBackgroundLines =
+  //     '$_imagesPath/home_first_category_background_lines.png';
+  // static const String homeSecondCategoryBackgroundLines =
+  //     '$_imagesPath/home_second_category_background_lines.svg';
   static const String drawerBackgroundLines =
       '$_imagesPath/drawer_background_lines.svg';
   static const String categoriesBackgroundLines =
@@ -47,9 +40,9 @@ class ImageManager {
   static const String karat_18 = '$_imagesPath/karat_18.png';
   static const String karat_21 = '$_imagesPath/karat_21.png';
   static const String karat_24 = '$_imagesPath/karat_24.png';
-  static const String slider1 = '$_imagesPath/slider_1.jpeg';
-  static const String slider2 = '$_imagesPath/slider_2.jpeg';
-  static const String slider3 = '$_imagesPath/slider_3.jpeg';
+  static const String contactUsCardImage =
+      '$_imagesPath/contact_us_card_image.svg';
+  static const String taherProfile = '$_imagesPath/taher.jpeg';
 }
 
 class IconManager {
@@ -69,6 +62,9 @@ class IconManager {
   static const String search = '$_iconsPath/search.svg';
   static const String searchBlue = '$_iconsPath/search_blue.svg';
   static const String aboutUs = '$_iconsPath/about_us.svg';
+  static const String facebook = '$_iconsPath/facebook.svg';
+  static const String whatsApp = '$_iconsPath/whatsapp.svg';
+  static const String phone = '$_iconsPath/phone.svg';
 }
 
 class FontManager {

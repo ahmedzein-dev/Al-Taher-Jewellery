@@ -1,6 +1,6 @@
-import 'package:altaher_jewellery/about_contact_us/presentation/screens/about_us_screen.dart';
-import 'package:altaher_jewellery/about_contact_us/presentation/screens/contact_us_screen.dart';
+import 'package:altaher_jewellery/about_us/presentation/screens/about_us_screen.dart';
 import 'package:altaher_jewellery/categories/presentation/screens/category_products.dart';
+import 'package:altaher_jewellery/contact_us/presentation/screens/contact_us_screen.dart';
 import 'package:altaher_jewellery/core/shared/widgets/image_preview.dart';
 import 'package:altaher_jewellery/currency/presentation/screens/currency_screen.dart';
 import 'package:altaher_jewellery/favorites/presentation/blocs/add_delete_favorite_cubit/add_delete_favorite_cubit.dart';

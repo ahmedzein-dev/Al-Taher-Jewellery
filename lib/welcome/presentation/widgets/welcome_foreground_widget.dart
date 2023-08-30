@@ -22,10 +22,11 @@ class WelcomeForegroundWidget extends StatelessWidget {
           // SvgPicture.asset(ImageManager.welcomeLogo),
           SvgPicture.asset(ImageManager.taherWelcomeLogo),
           SizedBox(
-            height: 50.h,
+            height: 65.h,
           ),
           Image.asset(
-            ImageManager.welcomeForegroundImage,
+            //  ImageManager.welcomeForegroundImage,
+            ImageManager.taherWelcomeForegroundImage,
             width: 233.w,
             height: 335.h,
           ),
@@ -34,7 +35,7 @@ class WelcomeForegroundWidget extends StatelessWidget {
           ),
           const WelcomeDescriptionText(),
           SizedBox(
-            height: 50.h,
+            height: 65.h,
           ),
           const WelcomeRoundedButton(),
         ],
