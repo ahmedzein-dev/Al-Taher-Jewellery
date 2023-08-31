@@ -66,8 +66,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                         CategoryListItems(
                           title: 'خواتم',
-                          cardItemBackground: ColorManager.productItemCard,
-                          listItemsBackground: ColorManager.listItemsBackground,
+                          // cardItemBackground: ColorManager.productItemCard,
+                          // listItemsBackground: ColorManager.listItemsBackground,
                           products: state.homeEntity.rings,
                         ),
                         SizedBox(
@@ -83,8 +83,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                         CategoryListItems(
                           title: 'سلاسل',
-                          cardItemBackground: ColorManager.productItemCard,
-                          listItemsBackground: ColorManager.listItemsBackground,
+                          // cardItemBackground: ColorManager.productItemCard,
+                          // listItemsBackground: ColorManager.listItemsBackground,
                           products: state.homeEntity.necklaces,
                         ),
                         SizedBox(
@@ -99,8 +99,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                         CategoryListItems(
                           title: 'سبايك',
-                          cardItemBackground: ColorManager.productItemCard,
-                          listItemsBackground: ColorManager.listItemsBackground,
+                          // cardItemBackground: ColorManager.productItemCard,
+                          // listItemsBackground: ColorManager.listItemsBackground,
                           products: state.homeEntity.bars,
                         ),
 
