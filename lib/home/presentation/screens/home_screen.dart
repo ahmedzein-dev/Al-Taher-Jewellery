@@ -1,5 +1,4 @@
 import 'package:altaher_jewellery/core/enums/enums.dart';
-import 'package:altaher_jewellery/core/managers/color_manager.dart';
 import 'package:altaher_jewellery/core/shared/widgets/failure_widget.dart';
 import 'package:altaher_jewellery/core/shared/widgets/loading_indicator.dart';
 import 'package:altaher_jewellery/home/presentation/blocs/products/products_cubit.dart';
