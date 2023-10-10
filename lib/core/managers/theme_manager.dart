@@ -59,21 +59,24 @@ class ThemeManager {
             fontSize: 14.sp,
             fontWeight: FontWeight.w700,
           ),
-          disabledBackgroundColor: const Color(0xFFE5F1DE),
           minimumSize: const Size(0, 50),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
+          minimumSize: const MaterialStatePropertyAll(
+            Size(0, 50),
+          ),
           textStyle: MaterialStateProperty.all(
-            const TextStyle(
+            TextStyle(
+              fontSize: 15.sp,
               color: ColorManager.white,
             ),
           ),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                AppRadius.borderRadius8,
+                AppRadius.borderRadius20,
               ),
               side: const BorderSide(
                 color: ColorManager.primary,

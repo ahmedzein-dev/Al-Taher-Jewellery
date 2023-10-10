@@ -59,7 +59,10 @@ buildAppBarWithTitleAndActions(BuildContext context, String title) {
     actions: [
       IconButton(
         onPressed: () {
-          Navigator.of(context).pushNamed(Routes.search);
+          Navigator.of(context).pushNamed(
+            Routes.search,
+            arguments: context.read<ProductsCubit>().state.homeEntity,
+          );
         },
         icon: SvgPicture.asset(
           IconManager.search,

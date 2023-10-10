@@ -18,6 +18,7 @@ import '../../favorites/presentation/blocs/Favorites/favorites_cubit.dart';
 import '../../favorites/presentation/blocs/add_delete_favorite_cubit/add_delete_favorite_cubit.dart';
 import '../../home/data/data_sources/product_remote_data_source.dart';
 import '../../home/data/data_sources/product_remote_data_source_impl.dart';
+import '../../search/presentation/blocs/filter_search/filter_search_cubit.dart';
 import '../../welcome/domain/use_cases/check_welcome_status_use_case.dart';
 import '../../welcome/domain/use_cases/complete_welcome_use_case.dart';
 import '../../welcome/presentation/blocs/splash/splash_cubit.dart';
@@ -110,6 +111,9 @@ Future<void> initServices() async {
   );
   sl.registerFactory(
     () => SearchCubit(),
+  );
+  sl.registerFactory(
+    () => FilterSearchCubit(),
   );
   sl.registerFactory(
     () => FavoritesCubit(

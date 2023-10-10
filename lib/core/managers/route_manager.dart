@@ -6,7 +6,6 @@ import 'package:altaher_jewellery/currency/presentation/screens/currency_screen.
 import 'package:altaher_jewellery/favorites/presentation/blocs/add_delete_favorite_cubit/add_delete_favorite_cubit.dart';
 import 'package:altaher_jewellery/favorites/presentation/screens/favorite_products_screen.dart';
 import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
-import 'package:altaher_jewellery/home/presentation/blocs/products/products_cubit.dart';
 import 'package:altaher_jewellery/home/presentation/screens/latest_products_screen.dart';
 import 'package:altaher_jewellery/home/presentation/screens/product_details_screen.dart';
 import 'package:altaher_jewellery/search/presentation/blocs/search_cubit.dart';
@@ -61,16 +60,8 @@ class RouteGenerator {
       case Routes.home:
         return MaterialPageRoute(
           builder: (_) {
-            return MultiBlocProvider(
-              providers: [
-                BlocProvider(
-                  create: (BuildContext context) => sl<NavBarCubit>(),
-                ),
-                BlocProvider(
-                  create: (BuildContext context) =>
-                      sl<ProductsCubit>()..getProducts(),
-                )
-              ],
+            return BlocProvider(
+              create: (BuildContext context) => sl<NavBarCubit>(),
               child: const HomeLayout(),
             );
           },
@@ -95,7 +86,8 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) {
             return BlocProvider(
-              create: (_) => sl<SearchCubit>(),
+              create: (_) => sl<SearchCubit>()
+                ..initFilteredProducts(settings.arguments as HomeEntity),
               child: SearchScreen(
                 homeEntity: settings.arguments as HomeEntity,
               ),

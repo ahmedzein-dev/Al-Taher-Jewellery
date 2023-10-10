@@ -11,6 +11,7 @@ import 'core/managers/theme_manager.dart';
 import 'core/services/services.dart';
 import 'core/utils/bloc_observer.dart';
 import 'favorites/presentation/blocs/Favorites/favorites_cubit.dart';
+import 'home/presentation/blocs/products/products_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => sl<FavoritesCubit>()..getFavorite(),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => sl<ProductsCubit>()..getProducts(),
         )
       ],
       child: ScreenUtilInit(
