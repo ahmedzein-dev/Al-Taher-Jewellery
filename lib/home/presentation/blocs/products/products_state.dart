@@ -26,6 +26,8 @@ class ProductsState extends Equatable {
       bars: [],
       bracelets: [],
       slider: [],
+      group: [],
+      twins: [],
     ),
     //  this.searchedPosts = const [],
   });

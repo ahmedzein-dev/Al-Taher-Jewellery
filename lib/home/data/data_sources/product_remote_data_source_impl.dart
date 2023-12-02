@@ -34,9 +34,11 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
   @override
   Future<List<ProductModel>> getLatestProducts() async {
     List<ProductModel> latestProducts = [];
+    latestProducts.addAll(getCategoryLatestProducts(homeModel.rings, 4));
+    latestProducts.addAll(getCategoryLatestProducts(homeModel.twins, 4));
     latestProducts.addAll(getCategoryLatestProducts(homeModel.bracelets, 4));
     latestProducts.addAll(getCategoryLatestProducts(homeModel.necklaces, 4));
-    latestProducts.addAll(getCategoryLatestProducts(homeModel.rings, 4));
+    latestProducts.addAll(getCategoryLatestProducts(homeModel.group, 4));
     latestProducts.addAll(getCategoryLatestProducts(homeModel.earrings, 4));
     latestProducts.addAll(getCategoryLatestProducts(homeModel.bars, 2));
     if (latestProducts.isEmpty) {

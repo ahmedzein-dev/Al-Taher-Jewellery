@@ -69,20 +69,20 @@ class ClientDrawer extends StatelessWidget {
                     Navigator.of(context).pushNamed(Routes.favorites);
                   },
                 ),
-                ListTile(
-                  title: Text(
-                    'أسعار اليوم',
-                    style: TextStyleManager.black_20,
-                  ),
-                  leading: SvgPicture.asset(
-                    IconManager.currency,
-                    width: 35.w,
-                    height: 35.h,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).pushNamed(Routes.currency);
-                  },
-                ),
+                // ListTile(
+                //   title: Text(
+                //     'أسعار اليوم',
+                //     style: TextStyleManager.black_20,
+                //   ),
+                //   leading: SvgPicture.asset(
+                //     IconManager.currency,
+                //     width: 35.w,
+                //     height: 35.h,
+                //   ),
+                //   onTap: () {
+                //     Navigator.of(context).pushNamed(Routes.currency);
+                //   },
+                // ),
                 ListTile(
                   //  title: const Text('الجواهرجى'),
                   title: Text(

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/shared/widgets/cached_network_image.dart';
 
-class HomeSliderForeground extends StatelessWidget {
+class HomeSliderForegroundImage extends StatelessWidget {
   final String imgUrl;
 
-  const HomeSliderForeground({
+  const HomeSliderForegroundImage({
     super.key,
     required this.imgUrl,
   });

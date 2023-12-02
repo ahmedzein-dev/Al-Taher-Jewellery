@@ -14,6 +14,10 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../currency/data/data_sources/currency_firebase_service.dart';
+import '../../currency/data/repositories/currency_repository_impl.dart';
+import '../../currency/domain/repositories/currency_repository.dart';
+import '../../currency/presentation/blocs/get_gold_price/currency_cubit.dart';
 import '../../favorites/presentation/blocs/Favorites/favorites_cubit.dart';
 import '../../favorites/presentation/blocs/add_delete_favorite_cubit/add_delete_favorite_cubit.dart';
 import '../../home/data/data_sources/product_remote_data_source.dart';
@@ -53,6 +57,11 @@ Future<void> initServices() async {
       sl(),
     ),
   );
+  sl.registerLazySingleton<GoldPriceFirebaseService>(
+    () => GoldPriceFirebaseService(
+      firebaseDatabase: sl(),
+    ),
+  );
 
   // repositories
 
@@ -66,7 +75,11 @@ Future<void> initServices() async {
       sl(),
     ),
   );
-
+  sl.registerLazySingleton<CurrencyRepository>(
+    () => CurrencyRepositoryImpl(
+      goldPriceFirebaseService: sl(),
+    ),
+  );
   // use cases
 
   sl.registerLazySingleton<CheckWelcomeStatusUseCase>(
@@ -123,6 +136,11 @@ Future<void> initServices() async {
   sl.registerFactory(
     () => AddDeleteFavoriteCubit(
       sl(),
+    ),
+  );
+  sl.registerFactory(
+    () => CurrencyCubit(
+      currencyRepository: sl(),
     ),
   );
 }

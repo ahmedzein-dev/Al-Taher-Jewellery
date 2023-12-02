@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:altaher_jewellery/core/constants/constants.dart';
 import 'package:altaher_jewellery/favorites/presentation/blocs/Favorites/favorites_cubit.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +34,6 @@ class ProductItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('ProductItemCard build');
     return InkWell(
       onTap: fromDetails
           ? () {

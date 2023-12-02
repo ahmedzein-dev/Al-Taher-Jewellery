@@ -1,3 +1,4 @@
+import 'package:altaher_jewellery/core/managers/color_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../managers/text_styles_manager.dart';
@@ -5,11 +6,13 @@ import '../../managers/text_styles_manager.dart';
 class FailureWidget extends StatelessWidget {
   final String message;
   final VoidCallback? onRetry;
+  final Color color;
 
   const FailureWidget({
     Key? key,
     required this.message,
     this.onRetry,
+    this.color = ColorManager.black,
   }) : super(key: key);
 
   @override
@@ -28,9 +31,9 @@ class FailureWidget extends StatelessWidget {
           ),
           TextButton.icon(
             onPressed: onRetry,
-            icon: const Icon(
+            icon: Icon(
               Icons.refresh,
-              color: Colors.black,
+              color: color,
             ),
             label: Text(
               'اعادة تحميل',

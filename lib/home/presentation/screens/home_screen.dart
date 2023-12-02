@@ -11,6 +11,7 @@ import '../../../categories/presentation/widgets/category_list_items.dart';
 import '../../../core/managers/asset_manager.dart';
 import '../../../core/shared/widgets/client_drawer.dart';
 import '../../../core/shared/widgets/custom_app_bar.dart';
+import '../../../currency/presentation/blocs/get_gold_price/currency_cubit.dart';
 import '../widgets/home_slider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -20,7 +21,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        // TODO: call get products here
+        context.read<ProductsCubit>().getProducts();
+        context.read<CurrencyCubit>().getGoldPrice();
       },
       child: Scaffold(
         appBar: buildAppBarWithLogo(
@@ -65,26 +67,14 @@ class HomeScreen extends StatelessWidget {
                         ),
                         CategoryListItems(
                           title: 'خواتم',
-                          // cardItemBackground: ColorManager.productItemCard,
-                          // listItemsBackground: ColorManager.listItemsBackground,
                           products: state.homeEntity.rings,
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         CategoryListItems(
-                          title: 'غوايش',
-                          products: state.homeEntity.bracelets,
-                        ),
-
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CategoryListItems(
-                          title: 'سلاسل',
-                          // cardItemBackground: ColorManager.productItemCard,
-                          // listItemsBackground: ColorManager.listItemsBackground,
-                          products: state.homeEntity.necklaces,
+                          title: 'دبل وتوينزات',
+                          products: state.homeEntity.twins,
                         ),
                         SizedBox(
                           height: 10.h,
@@ -97,30 +87,29 @@ class HomeScreen extends StatelessWidget {
                           height: 10.h,
                         ),
                         CategoryListItems(
-                          title: 'سبايك',
-                          // cardItemBackground: ColorManager.productItemCard,
-                          // listItemsBackground: ColorManager.listItemsBackground,
-                          products: state.homeEntity.bars,
+                          title: 'غوايش',
+                          products: state.homeEntity.bracelets,
                         ),
-
-                        // HomeCategoryWidget(
-                        //   categoryTitle: 'خواتم',
-                        //   categoryBackgroundLines:
-                        //       ImageManager.homeFirstCategoryBackgroundLines,
-                        //   productItemsCardBackgroundColor: ColorManager.productItemCard,
-                        //   products: products1,
-                        // ),
-                        // SizedBox(
-                        //   height: 25.h,
-                        // ),
-                        // HomeCategoryWidget(
-                        //   categoryTitle: 'غوايش',
-                        //   categoryBackgroundLines:
-                        //       ImageManager.homeSecondCategoryBackgroundLines,
-                        //   products: products2,
-                        // ),
                         SizedBox(
-                          height: 100.h,
+                          height: 10.h,
+                        ),
+                        CategoryListItems(
+                          title: 'سلاسل',
+                          products: state.homeEntity.necklaces,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        CategoryListItems(
+                          title: 'أطقم',
+                          products: state.homeEntity.group,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        CategoryListItems(
+                          title: 'سبايك',
+                          products: state.homeEntity.bars,
                         ),
                       ],
                     ),

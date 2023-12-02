@@ -1,10 +1,11 @@
 import 'package:altaher_jewellery/core/managers/size_manager.dart';
+import 'package:altaher_jewellery/home/presentation/widgets/home_slider_gold_price_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'home_slider_background.dart';
-import 'home_slider_foreground.dart';
+import 'home_slider_foreground_image.dart';
 import 'home_slider_indicator.dart';
 
 class HomeSlider extends StatefulWidget {
@@ -43,9 +44,10 @@ class _HomeSliderState extends State<HomeSlider> {
                 child: Stack(
                   children: [
                     const HomeSliderBackground(),
-                    HomeSliderForeground(
+                    HomeSliderForegroundImage(
                       imgUrl: widget.slideImages[itemIndex],
                     ),
+                    const HomeSliderGoldPriceWidget()
                   ],
                 ),
               );

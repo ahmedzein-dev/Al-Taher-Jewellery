@@ -10,6 +10,7 @@ import 'core/managers/route_manager.dart';
 import 'core/managers/theme_manager.dart';
 import 'core/services/services.dart';
 import 'core/utils/bloc_observer.dart';
+import 'currency/presentation/blocs/get_gold_price/currency_cubit.dart';
 import 'favorites/presentation/blocs/Favorites/favorites_cubit.dart';
 import 'home/presentation/blocs/products/products_cubit.dart';
 
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => sl<FavoritesCubit>()..getFavorite(),
+        ),
+        BlocProvider(
+          create: (_) => sl<CurrencyCubit>()..getGoldPrice(),
         ),
         BlocProvider(
           create: (BuildContext context) => sl<ProductsCubit>()..getProducts(),

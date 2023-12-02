@@ -31,7 +31,7 @@ class AboutUSScreen extends StatelessWidget {
               children: [
                 const AboutUsTextWidget(
                     text:
-                        'تطبيق jewellery store  هو تطبيق تعرض فيه محلات المجوهرات بضاعتها ومن خلاله يتصفح الزبون البضاعة ويتعرف على الاسعار والعديد من المزايا الأخرى .'),
+                        'تطبيق مجوهرات الطاهر هو تطبيق يعرض فيه مجموعة متميزة من الحلي ومن خلاله يتصفح الزبون البضاعة ويستطيع اضافة المنتج الذى اعجبه الى مفضلته ويتعرف على الاسعار والعديد من المزايا الأخرى .'),
                 SizedBox(height: 25.h),
                 Text('المطورون', style: TextStyleManager.black_20BOLD),
                 SizedBox(height: 5.h),

@@ -26,11 +26,10 @@ class SearchCubit extends Cubit<SearchState> {
   FilterEnum? get filter => _filter;
 
   SearchCubit() : super(SearchInitial());
-  HomeEntity? _homeEntity;
 
   search(HomeEntity homeEntity) {
     Categories targetedCategory = getTargetedCategory();
-    getProductsByCategory(targetedCategory, _homeEntity!);
+    getProductsByCategory(targetedCategory, homeEntity);
   }
 
   Categories getTargetedCategory() {
@@ -89,6 +88,22 @@ class SearchCubit extends Cubit<SearchState> {
         emit(
           SearchSuccessState(
             products: homeEntity.rings,
+          ),
+        );
+      case AppConstants.twins:
+        _searchedProducts = homeEntity.twins;
+        _filteredProducts = homeEntity.twins;
+        emit(
+          SearchSuccessState(
+            products: homeEntity.twins,
+          ),
+        );
+      case AppConstants.group:
+        _searchedProducts = homeEntity.group;
+        _filteredProducts = homeEntity.group;
+        emit(
+          SearchSuccessState(
+            products: homeEntity.group,
           ),
         );
         break;
@@ -155,42 +170,15 @@ class SearchCubit extends Cubit<SearchState> {
   // }
   void initFilteredProducts(HomeEntity homeEntity) {
     List<ProductEntity> products = [];
-    List<ProductEntity> rings = [];
-    int i = 200;
-    for (ProductEntity product in homeEntity.rings) {
-      if (i <= 160) {
-        i = i + 12;
-      } else if (i <= 100) {
-        i = i + 7;
-      } else {
-        i = i - 5;
-      }
-
-      rings.add(
-        ProductEntity(
-          id: product.id,
-          title: product.title,
-          imgUrl: product.imgUrl,
-          weight: i.toString(),
-          description: product.description,
-        ),
-      );
-    }
-    products.addAll(rings);
+    products.addAll(homeEntity.rings);
+    products.addAll(homeEntity.twins);
     products.addAll(homeEntity.bracelets);
-    products.addAll(homeEntity.bars);
     products.addAll(homeEntity.necklaces);
     products.addAll(homeEntity.earrings);
+    products.addAll(homeEntity.group);
+    products.addAll(homeEntity.bars);
     _searchedProducts = products;
     _filteredProducts = products;
-    _homeEntity = HomeEntity(
-      earrings: homeEntity.earrings,
-      necklaces: homeEntity.necklaces,
-      rings: rings,
-      bars: homeEntity.bars,
-      bracelets: homeEntity.bracelets,
-      slider: homeEntity.slider,
-    );
   }
 
   void applyFilter(FilterEnum filter) {

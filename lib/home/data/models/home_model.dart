@@ -10,6 +10,8 @@ class HomeModel extends HomeEntity {
     required super.bars,
     required super.bracelets,
     required super.slider,
+    required super.group,
+    required super.twins,
   });
 
   factory HomeModel.fromJson(Map json) {
@@ -19,6 +21,8 @@ class HomeModel extends HomeEntity {
       rings: ProductModel.modelFromSnapShot(json['rings']),
       bars: ProductModel.modelFromSnapShot(json['bars']),
       bracelets: ProductModel.modelFromSnapShot(json['bracelets']),
+      group: ProductModel.modelFromSnapShot(json['group']),
+      twins: ProductModel.modelFromSnapShot(json['twins']),
       slider: getSliderImagesFromJson(json['slider']),
     );
   }

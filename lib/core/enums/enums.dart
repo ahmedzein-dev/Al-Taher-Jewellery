@@ -38,6 +38,9 @@ enum Categories {
   bars('سبيكة'),
   bracelets('غويشة'),
   earrings('حلق'),
+  twins('توينز'),
+  debla('دبلة'),
+  group('طقم'),
   notFound('notFound');
 
   const Categories(this.title);
@@ -56,6 +59,11 @@ enum Categories {
         return 'bracelets';
       case Categories.earrings:
         return 'earrings';
+      case Categories.twins:
+      case Categories.debla:
+        return 'twins';
+      case Categories.group:
+        return 'group';
       case Categories.notFound:
         return 'notFound';
     }

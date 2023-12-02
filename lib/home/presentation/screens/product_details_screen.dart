@@ -59,6 +59,30 @@ class ProductDetailsScreen extends StatelessWidget {
                 ),
             ],
           ),
+          SafeArea(
+            child: InkWell(
+              onTap: () => Navigator.maybePop(context),
+              child: Padding(
+                padding: EdgeInsets.only(right: 20.0.w, top: 10.h),
+                child: Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: DecoratedBox(
+                    decoration: const BoxDecoration(
+                      color: ColorManager.primary,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(5.r),
+                      child: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: ColorManager.secondary,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
