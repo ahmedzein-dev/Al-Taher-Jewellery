@@ -9,8 +9,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../categories/presentation/widgets/category_list_items.dart';
 import '../../../core/managers/asset_manager.dart';
-import '../../../core/shared/widgets/client_drawer.dart';
-import '../../../core/shared/widgets/custom_app_bar.dart';
 import '../../../currency/presentation/blocs/get_gold_price/currency_cubit.dart';
 import '../widgets/home_slider.dart';
 
@@ -24,107 +22,100 @@ class HomeScreen extends StatelessWidget {
         context.read<ProductsCubit>().getProducts();
         context.read<CurrencyCubit>().getGoldPrice();
       },
-      child: Scaffold(
-        appBar: buildAppBarWithLogo(
-          context,
-          //  ImageManager.homeLogo,
-          ImageManager.taherHomeLogo,
-        ),
-        drawer: const ClientDrawer(),
-        body: Stack(
-          children: [
-            Positioned.fill(
-              child: SizedBox(
-                height: 1.sh,
-                width: 1.sw,
-                child: SvgPicture.asset(
-                  ImageManager.categoriesBackgroundLines,
-                  fit: BoxFit.fill,
-                ),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: SizedBox(
+              height: 1.sh,
+              width: 1.sw,
+              child: SvgPicture.asset(
+                ImageManager.categoriesBackgroundLines,
+                fit: BoxFit.fill,
               ),
             ),
-            BlocBuilder<ProductsCubit, ProductsState>(
-              buildWhen: (previous, current) {
-                return previous.getProductsState != current.getProductsState;
-              },
-              builder: (context, state) {
-                if (state.getProductsState == RequestState.loading) {
-                  return showLoadingIndicator();
-                }
-                if (state.getProductsState == RequestState.success) {
-                  //  context.read<LatestProductsCubit>().getLatestProducts();
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        HomeSlider(
-                          slideImages: state.homeEntity.slider,
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        CategoryListItems(
-                          title: 'خواتم',
-                          products: state.homeEntity.rings,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CategoryListItems(
-                          title: 'دبل وتوينزات',
-                          products: state.homeEntity.twins,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CategoryListItems(
-                          title: 'حلقان',
-                          products: state.homeEntity.earrings,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CategoryListItems(
-                          title: 'غوايش',
-                          products: state.homeEntity.bracelets,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CategoryListItems(
-                          title: 'سلاسل',
-                          products: state.homeEntity.necklaces,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CategoryListItems(
-                          title: 'أطقم',
-                          products: state.homeEntity.group,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CategoryListItems(
-                          title: 'سبايك',
-                          products: state.homeEntity.bars,
-                        ),
-                      ],
-                    ),
-                  );
-                }
-                return FailureWidget(
-                  message: state.getProductsError ?? 'حدث خطأ ما',
-                  onRetry: () {
-                    context.read<ProductsCubit>().getProducts();
-                  },
+          ),
+          BlocBuilder<ProductsCubit, ProductsState>(
+            buildWhen: (previous, current) {
+              return previous.getProductsState != current.getProductsState;
+            },
+            builder: (context, state) {
+              if (state.getProductsState == RequestState.loading) {
+                return showLoadingIndicator();
+              }
+              if (state.getProductsState == RequestState.success) {
+                //  context.read<LatestProductsCubit>().getLatestProducts();
+                return SingleChildScrollView(
+                  padding: EdgeInsets.only(bottom: 85.h),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      HomeSlider(
+                        slideImages: state.homeEntity.slider,
+                      ),
+                      SizedBox(
+                        height: 25.h,
+                      ),
+                      CategoryListItems(
+                        title: 'خواتم',
+                        products: state.homeEntity.rings,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CategoryListItems(
+                        title: 'دبل وتوينزات',
+                        products: state.homeEntity.twins,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CategoryListItems(
+                        title: 'حلقان',
+                        products: state.homeEntity.earrings,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CategoryListItems(
+                        title: 'غوايش',
+                        products: state.homeEntity.bracelets,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CategoryListItems(
+                        title: 'سلاسل',
+                        products: state.homeEntity.necklaces,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CategoryListItems(
+                        title: 'أطقم',
+                        products: state.homeEntity.group,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      CategoryListItems(
+                        title: 'سبايك',
+                        products: state.homeEntity.bars,
+                      ),
+                    ],
+                  ),
                 );
-              },
-            ),
-          ],
-        ),
+              }
+              return FailureWidget(
+                message: state.getProductsError ?? 'حدث خطأ ما',
+                onRetry: () {
+                  context.read<ProductsCubit>().getProducts();
+                },
+              );
+            },
+          ),
+        ],
       ),
     );
   }

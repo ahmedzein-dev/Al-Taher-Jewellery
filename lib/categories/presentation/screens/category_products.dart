@@ -22,8 +22,8 @@ class CategoryProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBarWithTitleAndActions(
-        context,
-        title,
+        context: context,
+        title: title,
       ),
       body: Stack(
         children: [

@@ -40,11 +40,9 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
   bool isProductInFavorites(String productId) {
     if (favoriteList.isEmpty) {
-      log('favoriteList.isEmpty isFavorite false');
       return false;
     }
     bool any = favoriteList.any((product) => product.id == productId);
-    log('isFavorite ($productId) $any');
     return any;
   }
 }

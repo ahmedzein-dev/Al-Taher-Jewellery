@@ -52,7 +52,9 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
 List<ProductModel> getCategoryLatestProducts(
     List<ProductEntity> category, int productCount) {
   List<ProductModel> categoryLatestProducts = [];
-  for (var i = 0; i < productCount; i++) {
+  for (var i = 0;
+      i < checkProductsCountInRange(category.length, productCount);
+      i++) {
     categoryLatestProducts.add(
       ProductModel(
         id: category[i].id,
@@ -64,4 +66,12 @@ List<ProductModel> getCategoryLatestProducts(
     );
   }
   return categoryLatestProducts;
+}
+
+int checkProductsCountInRange(int productsLength, int productCount) {
+  if (productsLength >= productCount) {
+    return productCount;
+  } else {
+    return productsLength;
+  }
 }

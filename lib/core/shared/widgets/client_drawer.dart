@@ -55,20 +55,20 @@ class ClientDrawer extends StatelessWidget {
                     );
                   },
                 ),
-                ListTile(
-                  title: Text(
-                    'المفضلة',
-                    style: TextStyleManager.black_20,
-                  ),
-                  leading: SvgPicture.asset(
-                    IconManager.favoriteBlack,
-                    width: 35.w,
-                    height: 35.h,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).pushNamed(Routes.favorites);
-                  },
-                ),
+                // ListTile(
+                //   title: Text(
+                //     'المفضلة',
+                //     style: TextStyleManager.black_20,
+                //   ),
+                //   leading: SvgPicture.asset(
+                //     IconManager.favoriteBlack,
+                //     width: 35.w,
+                //     height: 35.h,
+                //   ),
+                //   onTap: () {
+                //     Navigator.of(context).pushNamed(Routes.favorites);
+                //   },
+                // ),
                 // ListTile(
                 //   title: Text(
                 //     'أسعار اليوم',

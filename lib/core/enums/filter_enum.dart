@@ -5,9 +5,9 @@ enum FilterEnum {
   String getStringFilter() {
     switch (this) {
       case FilterEnum.weightLowToHigh:
-        return 'السعر: من الاقل الي الاعلي';
+        return 'الوزن: من الاقل الي الاعلي';
       case FilterEnum.weightHighToLow:
-        return 'السعر: من الاعلي الي الاقل';
+        return 'الوزن: من الاعلي الي الاقل';
     }
   }
 }

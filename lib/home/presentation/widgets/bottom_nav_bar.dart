@@ -27,7 +27,7 @@ class BottomNavBar extends StatelessWidget {
           ),
           items: [
             SvgPicture.asset(
-              IconManager.blog,
+              IconManager.favorite,
             ),
             SvgPicture.asset(
               IconManager.home,

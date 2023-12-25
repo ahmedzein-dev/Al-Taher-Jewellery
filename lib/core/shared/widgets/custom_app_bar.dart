@@ -47,7 +47,8 @@ buildAppBarWithLogo(BuildContext context, String logoPath) {
   );
 }
 
-buildAppBarWithTitleAndActions(BuildContext context, String title) {
+buildAppBarWithTitleAndActions(
+    {required BuildContext context, required String title, bool? withDrawer}) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -69,6 +70,17 @@ buildAppBarWithTitleAndActions(BuildContext context, String title) {
         ),
       ),
     ],
+    leading: withDrawer == true
+        ? Builder(
+            builder: (context) => IconButton(
+              onPressed: () => Scaffold.of(context).openDrawer(),
+              icon: const Icon(
+                Icons.menu_outlined,
+                size: 35,
+              ),
+            ),
+          )
+        : null,
   );
 }
 

@@ -29,9 +29,11 @@ class FavoriteProductsListItems extends StatelessWidget {
         if (state is FavoritesSuccessState) {
           return ProductsGridView(
             products: state.favorites,
-            padding: EdgeInsets.symmetric(
-              horizontal: AppPadding.padding10.w,
-              vertical: AppPadding.padding16.h,
+            padding: EdgeInsets.fromLTRB(
+              AppPadding.padding10.w,
+              AppPadding.padding16.h,
+              AppPadding.padding10.w,
+              85.h,
             ),
           );
         }
