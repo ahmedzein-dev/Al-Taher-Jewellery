@@ -37,7 +37,7 @@ class AboutUSScreen extends StatelessWidget {
                 SizedBox(height: 5.h),
                 const DeveloperWidget(title: 'تصميم', name: 'Ali Zein'),
                 SizedBox(height: 10.h),
-                const DeveloperWidget(title: 'تطوير', name: 'Ahmed Zein'),
+                const DeveloperWidget(title: 'برمجة', name: 'Ahmed Zein'),
                 SizedBox(height: 15.h),
                 AboutUsButton(
                   onTab: () async {

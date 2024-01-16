@@ -26,6 +26,7 @@ class CategoryBackground extends StatelessWidget {
       padding: EdgeInsets.only(right: 15.w),
       child: Card(
         color: color,
+        margin: const EdgeInsets.fromLTRB(0, 4, 4, 4),
         elevation: 8,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
