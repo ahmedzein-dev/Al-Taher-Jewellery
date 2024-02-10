@@ -59,8 +59,9 @@ enum Categories {
         return 'bracelets';
       case Categories.earrings:
         return 'earrings';
-      case Categories.twins:
       case Categories.debla:
+        return 'debla';
+      case Categories.twins:
         return 'twins';
       case Categories.group:
         return 'group';

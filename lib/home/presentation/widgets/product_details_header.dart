@@ -19,14 +19,15 @@ class ProductDetailsHeader extends StatelessWidget {
       margin: EdgeInsets.zero,
       elevation: 8,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(
-          AppRadius.borderRadius23.r,
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(AppRadius.borderRadius20.r),
         ),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(
-          AppRadius.borderRadius23.r,
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(AppRadius.borderRadius20.r),
         ),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         child: GestureDetector(
           onPanStart: (_) {
             Navigator.of(context).pushNamed(

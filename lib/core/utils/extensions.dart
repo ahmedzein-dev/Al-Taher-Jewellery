@@ -15,3 +15,11 @@ extension UnfocusExtension on BuildContext {
     FocusScope.of(this).unfocus();
   }
 }
+
+extension ParseToInt on String {
+  int parseToInt() => int.parse(this);
+}
+
+extension ParseToDouble on String {
+  double parseToDouble() => double.parse(this);
+}

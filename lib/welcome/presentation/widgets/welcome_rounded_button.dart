@@ -1,7 +1,7 @@
+import 'package:altaher_jewellery/welcome/presentation/blocs/welcome/welcome_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:altaher_jewellery/welcome/presentation/blocs/welcome/welcome_cubit.dart';
 
 import '../../../core/managers/color_manager.dart';
 import '../../../core/managers/route_manager.dart';
@@ -13,7 +13,6 @@ class WelcomeRoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56.h,
       width: 140.w,
       child: TextButton(
         onPressed: () {
@@ -32,12 +31,15 @@ class WelcomeRoundedButton extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               'نتفرج',
-              style: TextStyleManager.darkBlue_26BOLD,
+              textAlign: TextAlign.center,
+              style: TextStyleManager.darkBlue_24BOLD,
             ),
-            const Icon(Icons.arrow_back_ios_new_outlined,
+            const SizedBox(width: 3),
+            const Icon(Icons.arrow_forward_ios_outlined,
                 color: ColorManager.secondary)
           ],
         ),

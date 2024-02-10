@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:altaher_jewellery/core/managers/size_manager.dart';
 import 'package:altaher_jewellery/home/presentation/widgets/home_slider_gold_price_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -10,10 +12,12 @@ import 'home_slider_indicator.dart';
 
 class HomeSlider extends StatefulWidget {
   final List<String> slideImages;
+  final bool isLoading;
 
   const HomeSlider({
     super.key,
     required this.slideImages,
+    required this.isLoading,
   });
 
   @override
@@ -25,6 +29,7 @@ class _HomeSliderState extends State<HomeSlider> {
 
   @override
   Widget build(BuildContext context) {
+    log('is loading : ${widget.isLoading}');
     return Column(
       children: [
         Padding(
@@ -32,12 +37,9 @@ class _HomeSliderState extends State<HomeSlider> {
             horizontal: AppPadding.screenBodyPadding,
           ),
           child: CarouselSlider.builder(
-            itemCount: widget.slideImages.length,
-            itemBuilder: (
-              BuildContext context,
-              int itemIndex,
-              int pageViewIndex,
-            ) {
+            itemCount: widget.isLoading ? 3 : widget.slideImages.length,
+            itemBuilder:
+                (BuildContext context, int itemIndex, int pageViewIndex) {
               return SizedBox(
                 height: 202.h,
                 width: .9.sw,
@@ -45,9 +47,11 @@ class _HomeSliderState extends State<HomeSlider> {
                   children: [
                     const HomeSliderBackground(),
                     HomeSliderForegroundImage(
-                      imgUrl: widget.slideImages[itemIndex],
+                      isLoading: widget.isLoading,
+                      imgUrl:
+                          widget.isLoading ? '' : widget.slideImages[itemIndex],
                     ),
-                    const HomeSliderGoldPriceWidget()
+                    if (!widget.isLoading) const HomeSliderGoldPriceWidget()
                   ],
                 ),
               );

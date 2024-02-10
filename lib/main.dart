@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
       ],
       child: ScreenUtilInit(
         designSize: const Size(390, 852),
-        minTextAdapt: true,
         splitScreenMode: true,
+        fontSizeResolver: FontSizeResolvers.height,
         builder: (context, child) {
           return MaterialApp(
             title: 'مجوهرات الطاهر',

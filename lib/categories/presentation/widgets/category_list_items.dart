@@ -10,6 +10,7 @@ class CategoryListItems extends StatelessWidget {
   final String title;
   final Color listItemsBackground;
   final Color cardItemBackground;
+  final bool isLoading;
 
   const CategoryListItems({
     Key? key,
@@ -17,6 +18,7 @@ class CategoryListItems extends StatelessWidget {
     required this.products,
     this.cardItemBackground = ColorManager.white,
     this.listItemsBackground = ColorManager.white,
+    required this.isLoading,
   }) : super(key: key);
 
   @override
@@ -27,8 +29,9 @@ class CategoryListItems extends StatelessWidget {
       products: products,
       child: HorizontalListItems(
         color: cardItemBackground,
+        isLoading: isLoading,
+        prodTitle: title,
         allProducts: products,
-        //     color: ColorManager.productItemCard,
       ),
     );
   }

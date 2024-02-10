@@ -35,9 +35,9 @@ class SearchListItems extends StatelessWidget {
               child: Expanded(
                 child: ListView.separated(
                   padding: EdgeInsets.fromLTRB(
-                    AppPadding.padding6.w,
+                    AppPadding.padding16.w,
                     AppPadding.padding25.h,
-                    AppPadding.padding6.w,
+                    AppPadding.padding16.w,
                     AppPadding.padding16.h,
                   ),
                   itemCount:

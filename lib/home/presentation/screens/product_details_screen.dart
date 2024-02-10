@@ -40,9 +40,10 @@ class ProductDetailsScreen extends StatelessWidget {
               SizedBox(
                 height: 25.h,
               ),
-              ProductDetailsDescriptionRectangularCard(
-                product: product,
-              ),
+              if (product.description.isNotEmpty)
+                ProductDetailsDescriptionRectangularCard(
+                  product: product,
+                ),
               const Spacer(),
               if (allProducts.length > 1)
                 ProductDetailsSectionTitle(

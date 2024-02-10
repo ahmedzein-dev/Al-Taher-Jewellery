@@ -38,7 +38,7 @@ class CategorySectionTitle extends StatelessWidget {
                 SizedBox(
                   width: 10.w,
                 ),
-                const Icon(Icons.arrow_back_ios_new),
+                const Icon(Icons.arrow_forward_ios_outlined),
               ],
             ),
           ),

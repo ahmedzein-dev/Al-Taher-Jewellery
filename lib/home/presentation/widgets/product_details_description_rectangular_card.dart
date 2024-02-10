@@ -46,9 +46,7 @@ class ProductDetailsDescriptionRectangularCard extends StatelessWidget {
                   height: 8.h,
                 ),
                 Text(
-                  product.description.isNotEmpty
-                      ? product.description
-                      : 'غير متاح وصف لهذا المتنج حتى الان.',
+                  product.description,
                   style: TextStyleManager.black_16,
                   maxLines: 3,
                 ),

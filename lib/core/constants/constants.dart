@@ -12,6 +12,7 @@ class AppConstants {
   static const String bracelets = 'bracelets';
   static const String rings = 'rings';
   static const String twins = 'twins';
+  static const String debla = 'debla';
   static const String group = 'group';
   static const String kFavoritesBox = 'favoritesBox';
   static const String whatsappUrl = 'whatsapp://send?phone=number';
