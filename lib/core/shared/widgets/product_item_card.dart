@@ -71,18 +71,14 @@ class ProductItemCard extends StatelessWidget {
                 width: width.w,
                 height: height,
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(
-                      20.r,
-                    ),
-                    child: CachedNetworkImageWidget(
-                      imgUrl: product.imgUrl,
-                      onErrorWidget: kNetworkImageOnErrorWidget,
-                    )
-                    // Image.asset(
-                    //   product.imgUrl,
-                    //   fit: BoxFit.cover,
-                    // ),
-                    ),
+                  borderRadius: BorderRadius.circular(
+                    20.r,
+                  ),
+                  child: CachedNetworkImageWidget(
+                    imgUrl: product.imgUrl,
+                    onErrorWidget: kNetworkImageOnErrorWidget,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 10,

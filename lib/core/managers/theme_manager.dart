@@ -9,6 +9,7 @@ import 'size_manager.dart';
 class ThemeManager {
   static ThemeData get lightTheme {
     return ThemeData(
+      useMaterial3: false,
       brightness: Brightness.light,
       //fontFamily: FontManager.balooBhaijaan,
       scaffoldBackgroundColor: ColorManager.background,

@@ -339,6 +339,7 @@ class TextStyleManager {
   static final TextStyle darkBlue_26BOLD = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 26.sp,
+      height: .5,
       color: ColorManager.secondary,
       fontFamily: FontManager.balooBhaijaan);
 

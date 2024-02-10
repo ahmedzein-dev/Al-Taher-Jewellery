@@ -15,29 +15,23 @@ class WelcomeForegroundWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          SizedBox(
-            height: 25.h,
-          ),
-          // SvgPicture.asset(ImageManager.welcomeLogo),
-          SvgPicture.asset(ImageManager.taherWelcomeLogo),
-          SizedBox(
-            height: 65.h,
-          ),
-          Image.asset(
-            //  ImageManager.welcomeForegroundImage,
-            ImageManager.taherWelcomeForegroundImage,
-            width: 233.w,
-            height: 335.h,
+          SvgPicture.asset(
+            ImageManager.taherAppLogo,
+            height: 200.h,
           ),
           SizedBox(
             height: 30.h,
           ),
           const WelcomeDescriptionText(),
           SizedBox(
-            height: 65.h,
+            height: 50.h,
           ),
           const WelcomeRoundedButton(),
+          SizedBox(
+            height: 60.h,
+          ),
         ],
       ),
     );

@@ -9,7 +9,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/enums/filter_enum.dart';
 import '../../../core/managers/asset_manager.dart';
 import '../../../core/managers/color_manager.dart';
-import '../../../core/managers/size_manager.dart';
 import '../../../core/managers/text_styles_manager.dart';
 import '../../../core/services/services.dart';
 import '../blocs/filter_search/filter_search_cubit.dart';
@@ -31,39 +30,34 @@ class SearchScreen extends StatelessWidget {
       body: Stack(
         children: [
           const SearchBackgroundLines(),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppPadding.screenBodyPadding.h,
-            ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 20.h,
+          Column(
+            children: [
+              SizedBox(
+                height: 20.h,
+              ),
+              CustomSearchField(
+                controller: context.read<SearchCubit>().searchController,
+                hint: 'أكتب ما تريد البحث عنه',
+                prefix: SvgPicture.asset(
+                  IconManager.searchBlue,
+                  fit: BoxFit.scaleDown,
                 ),
-                CustomSearchField(
-                  controller: context.read<SearchCubit>().searchController,
-                  hint: 'أكتب ما تريد البحث عنه',
-                  prefix: SvgPicture.asset(
-                    IconManager.searchBlue,
-                    fit: BoxFit.scaleDown,
-                  ),
-                  onFieldSubmitted: (_) {
-                    context.read<SearchCubit>().search(
-                          homeEntity,
-                        );
-                  },
-                  onPrefixPressed: () {
-                    context.read<SearchCubit>().search(
-                          homeEntity,
-                        );
-                  },
-                  //        onChanged: context.read<PostCubit>().onChangeHandler,
-                ),
-                const Expanded(
-                  child: SearchListItems(),
-                ),
-              ],
-            ),
+                onFieldSubmitted: (_) {
+                  context.read<SearchCubit>().search(
+                        homeEntity,
+                      );
+                },
+                onPrefixPressed: () {
+                  context.read<SearchCubit>().search(
+                        homeEntity,
+                      );
+                },
+                //        onChanged: context.read<PostCubit>().onChangeHandler,
+              ),
+              const Expanded(
+                child: SearchListItems(),
+              ),
+            ],
           ),
         ],
       ),

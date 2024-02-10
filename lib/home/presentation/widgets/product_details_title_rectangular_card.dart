@@ -28,10 +28,13 @@ class ProductDetailsTitleRectangularCard extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: AppPadding.padding12.h,
+            vertical: product.weight.isNotEmpty
+                ? AppPadding.padding12.h
+                : AppPadding.padding24.h,
             horizontal: AppPadding.padding24.w,
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,24 +48,23 @@ class ProductDetailsTitleRectangularCard extends StatelessWidget {
                   FavoriteIconWidget(product: product),
                 ],
               ),
-              Row(
-                children: [
-                  Text(
-                    product.weight.isNotEmpty
-                        ? '${product.weight}جرام'
-                        : 'وزن هذا المتنج غير متاح الان.',
-                    style: TextStyleManager.black_16,
-                  ),
-                  // SizedBox(
-                  //   width: 45.w,
-                  // ),
-                  // if (product.price.isNotEmpty)
-                  //   Text(
-                  //     '${product.price} LE',
-                  //     style: TextStyleManager.black_16,
-                  //   ),
-                ],
-              ),
+              if (product.weight.isNotEmpty)
+                Row(
+                  children: [
+                    Text(
+                      '${product.weight} جرام',
+                      style: TextStyleManager.black_18,
+                    ),
+                    // SizedBox(
+                    //   width: 45.w,
+                    // ),
+                    // if (product.price.isNotEmpty)
+                    //   Text(
+                    //     '${product.price} LE',
+                    //     style: TextStyleManager.black_16,
+                    //   ),
+                  ],
+                ),
             ],
           ),
         ),

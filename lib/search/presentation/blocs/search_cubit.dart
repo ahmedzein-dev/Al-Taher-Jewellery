@@ -1,5 +1,6 @@
 import 'package:altaher_jewellery/core/constants/constants.dart';
 import 'package:altaher_jewellery/core/enums/enums.dart';
+import 'package:altaher_jewellery/core/utils/extensions.dart';
 import 'package:altaher_jewellery/home/domain/entities/home_entity.dart';
 import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
 import 'package:equatable/equatable.dart';
@@ -91,6 +92,7 @@ class SearchCubit extends Cubit<SearchState> {
           ),
         );
       case AppConstants.twins:
+      case AppConstants.debla:
         _searchedProducts = homeEntity.twins;
         _filteredProducts = homeEntity.twins;
         emit(
@@ -189,7 +191,7 @@ class SearchCubit extends Cubit<SearchState> {
         newProducts = List<ProductEntity>.from(_filteredProducts);
         newProducts.sort(
           (a, b) {
-            return a.weight.compareTo(b.weight);
+            return a.weight.parseToInt().compareTo(b.weight.parseToInt());
           },
         );
         break;
@@ -197,7 +199,7 @@ class SearchCubit extends Cubit<SearchState> {
         newProducts = List<ProductEntity>.from(_filteredProducts);
         newProducts.sort(
           (a, b) {
-            return b.weight.compareTo(a.weight);
+            return b.weight.parseToInt().compareTo(a.weight.parseToInt());
           },
         );
         break;

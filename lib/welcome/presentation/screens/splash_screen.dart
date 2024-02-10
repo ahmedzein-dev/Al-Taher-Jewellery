@@ -46,6 +46,7 @@ class SplashScreen extends StatelessWidget {
       ],
       child: Scaffold(
         backgroundColor: ColorManager.white,
+        appBar: AppBar(),
         body: Center(
           child: SizedBox(
             child: SvgPicture.asset(

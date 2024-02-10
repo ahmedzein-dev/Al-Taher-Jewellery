@@ -29,7 +29,7 @@ class ProductDetailsSectionTitle extends StatelessWidget {
               width: 10.w,
             ),
             const Icon(
-              Icons.arrow_back_ios_new,
+              Icons.arrow_forward_ios_outlined,
             ),
           ],
         ),
