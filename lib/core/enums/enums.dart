@@ -33,6 +33,7 @@ enum Gender {
 }
 
 enum Categories {
+  all('كل المنتجات'),
   rings('خاتم'),
   necklaces('سلسلة'),
   bars('سبيكة'),
@@ -49,6 +50,8 @@ enum Categories {
 
   String getTitle() {
     switch (this) {
+      case Categories.all:
+        return 'all';
       case Categories.rings:
         return 'rings';
       case Categories.necklaces:

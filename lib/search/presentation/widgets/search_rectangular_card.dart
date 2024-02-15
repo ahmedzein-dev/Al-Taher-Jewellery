@@ -1,5 +1,6 @@
 import 'package:altaher_jewellery/core/managers/color_manager.dart';
 import 'package:altaher_jewellery/core/managers/size_manager.dart';
+import 'package:altaher_jewellery/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,6 +28,9 @@ class SearchRectangularCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        if (context.hasFocus()) {
+          context.unFocus();
+        }
         Navigator.of(context).pushNamed(
           Routes.productDetails,
           arguments: {

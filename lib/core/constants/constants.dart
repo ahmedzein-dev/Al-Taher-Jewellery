@@ -6,6 +6,7 @@ class AppConstants {
   static const String screens = 'screens';
   static const String arLocale = 'ar';
   static const String enLocale = 'en';
+  static const String all = 'all';
   static const String bars = 'bars';
   static const String necklaces = 'necklaces';
   static const String earrings = 'earrings';

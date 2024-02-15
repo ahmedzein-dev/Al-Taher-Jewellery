@@ -15,7 +15,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   FavoritesCubit(this.hive) : super(FavoritesInitial());
   List<ProductEntity> favoriteList = [];
 
-  getFavorite() {
+  void getFavorite() {
     log('getFavorite');
     Box<ProductEntity> favoriteBox =
         hive.box<ProductEntity>(AppConstants.kFavoritesBox);

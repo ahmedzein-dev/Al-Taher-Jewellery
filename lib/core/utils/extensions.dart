@@ -11,6 +11,10 @@ extension ScreenSizeExtension on BuildContext {
 }
 
 extension UnfocusExtension on BuildContext {
+  bool hasFocus() {
+    return FocusScope.of(this).hasFocus;
+  }
+
   void unFocus() {
     FocusScope.of(this).unfocus();
   }

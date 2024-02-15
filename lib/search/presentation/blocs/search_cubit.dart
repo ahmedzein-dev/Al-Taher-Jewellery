@@ -1,6 +1,5 @@
 import 'package:altaher_jewellery/core/constants/constants.dart';
 import 'package:altaher_jewellery/core/enums/enums.dart';
-import 'package:altaher_jewellery/core/utils/extensions.dart';
 import 'package:altaher_jewellery/home/domain/entities/home_entity.dart';
 import 'package:altaher_jewellery/home/domain/entities/product_entity.dart';
 import 'package:equatable/equatable.dart';
@@ -21,6 +20,7 @@ class SearchCubit extends Cubit<SearchState> {
   List<ProductEntity> _filteredProducts = [];
 
   List<ProductEntity> get filteredProducts => _filteredProducts;
+  List<ProductEntity> products = [];
 
   FilterEnum? _filter;
 
@@ -29,24 +29,46 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(SearchInitial());
 
   search(HomeEntity homeEntity) {
+    // The first state of this condition disables the search button when all products are already displayed,
+    // and the user hasn't initiated a search.
+    // The second state of this condition activate search button when the user initiates a search
+    // by entering text into the search field.
+    // It then starts searching for the product and disregards the first condition.
+    // Alternatively, when not all products are displayed on the search screen,
+    // it then shows all products on the search screen.
+    if (products.length == _filteredProducts.length &&
+        searchController.text.isEmpty) {
+      return;
+    }
     Categories targetedCategory = getTargetedCategory();
     getProductsByCategory(targetedCategory, homeEntity);
   }
 
   Categories getTargetedCategory() {
-    return Categories.values.firstWhere(
-      (category) => category.title.startsWith(
-        searchController.text.length == 1
-            ? searchController.text
-            : searchController.text.substring(0, 2),
-      ),
-      orElse: () => Categories.notFound,
-    );
+    return searchController.text.isEmpty
+        ? Categories.all
+        : Categories.values.firstWhere(
+            (category) => category.title.startsWith(
+              searchController.text.length == 1
+                  ? searchController.text
+                  : searchController.text.substring(0, 2),
+            ),
+            orElse: () => Categories.notFound,
+          );
   }
 
   getProductsByCategory(Categories category, HomeEntity homeEntity) {
     clearFilter();
     switch (category.getTitle()) {
+      case AppConstants.all:
+        _searchedProducts = products;
+        _filteredProducts = products;
+        emit(
+          SearchSuccessState(
+            products: products,
+          ),
+        );
+        break;
       case AppConstants.bars:
         _searchedProducts = homeEntity.bars;
         _filteredProducts = homeEntity.bars;
@@ -171,7 +193,6 @@ class SearchCubit extends Cubit<SearchState> {
   //   }
   // }
   void initFilteredProducts(HomeEntity homeEntity) {
-    List<ProductEntity> products = [];
     products.addAll(homeEntity.rings);
     products.addAll(homeEntity.twins);
     products.addAll(homeEntity.bracelets);
@@ -191,7 +212,11 @@ class SearchCubit extends Cubit<SearchState> {
         newProducts = List<ProductEntity>.from(_filteredProducts);
         newProducts.sort(
           (a, b) {
-            return a.weight.parseToInt().compareTo(b.weight.parseToInt());
+            double weightA =
+                a.weight.isNotEmpty ? double.parse(a.weight) : double.infinity;
+            double weightB =
+                b.weight.isNotEmpty ? double.parse(b.weight) : double.infinity;
+            return weightA.compareTo(weightB);
           },
         );
         break;
@@ -199,7 +224,14 @@ class SearchCubit extends Cubit<SearchState> {
         newProducts = List<ProductEntity>.from(_filteredProducts);
         newProducts.sort(
           (a, b) {
-            return b.weight.parseToInt().compareTo(a.weight.parseToInt());
+            double weightA = a.weight.isNotEmpty
+                ? double.parse(a.weight)
+                : double.negativeInfinity;
+            double weightB = b.weight.isNotEmpty
+                ? double.parse(b.weight)
+                : double.negativeInfinity;
+
+            return weightB.compareTo(weightA);
           },
         );
         break;
