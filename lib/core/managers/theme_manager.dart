@@ -43,7 +43,7 @@ class ThemeManager {
       listTileTheme: ListTileThemeData(
         titleTextStyle: TextStyleManager.black_20,
       ),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         color: ColorManager.white,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
